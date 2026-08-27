@@ -1,0 +1,2 @@
+<?php /** Title: Clothes store values * Slug: wpbb-clouthes/values * Categories: wp-patterns-main */ ?>
+<!-- wp:group {"align":"wide"} --><div class="wp-block-group alignwide"><!-- wp:html --><div class="wpbb-clothes-values"><div><h3>Natural materials</h3><p>Demo copy for fabric, sourcing and care information.</p></div><div><h3>Considered fit</h3><p>Use swatches and size variations without custom theme logic.</p></div><div><h3>Easy returns</h3><p>Reassuring fulfilment and aftercare messaging.</p></div></div><!-- /wp:html --></div><!-- /wp:group -->

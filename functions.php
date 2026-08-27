@@ -1,6 +1,12 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+
+function wpbb_clouthes_project_mode( $mode ) { return 'woocommerce'; }
+add_filter( 'wp_theme_project_mode', 'wpbb_clouthes_project_mode' );
+function wpbb_clouthes_woo_profile( $profile ) { return 'store'; }
+add_filter( 'wp_theme_woo_support_default_profile', 'wpbb_clouthes_woo_profile' );
+
 function wpbb_clouthes_assets() {
 	$theme = wp_get_theme();
 	wp_enqueue_style( 'wpbb-clouthes', get_stylesheet_uri(), array( 'wp-theme-style' ), $theme->get( 'Version' ) );

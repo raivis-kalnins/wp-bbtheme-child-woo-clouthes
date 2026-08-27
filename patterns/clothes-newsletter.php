@@ -1,0 +1,2 @@
+<?php /** Title: Clothes newsletter callout * Slug: wpbb-clouthes/newsletter * Categories: wp-patterns-main */ ?>
+<!-- wp:group {"align":"full","className":"wpbb-clothes-newsletter"} --><div class="wp-block-group alignfull wpbb-clothes-newsletter"><!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Notes from the studio</h2><!-- /wp:heading --><!-- wp:paragraph --><p>New pieces, material stories and useful wardrobe ideas. Connect this pattern to your preferred email form block.</p><!-- /wp:paragraph --></div><!-- /wp:group -->

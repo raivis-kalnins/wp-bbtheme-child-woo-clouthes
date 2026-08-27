@@ -2,8 +2,9 @@
 Theme Name: WP BBTheme Clothes Store
 Description: Fashion ecommerce sector child for WP BBTheme. Directory spelling is retained for project compatibility.
 Template: wp-bbtheme
-Version: 1.1.0
+Version: 2.0.0
 Requires at least: 6.6
+Tested up to: 7.1
 Requires PHP: 8.0
 Text Domain: wp-bbtheme-child-woo-clouthes
 */
@@ -33,3 +34,7 @@ Text Domain: wp-bbtheme-child-woo-clouthes
 .wp-theme-sector-shop .iws-products-grid li.product .price{color:var(--sector-primary)!important;font-weight:700!important}
 @media(max-width:900px){.wp-theme-sector-shop .iws-filter-more__content{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.wp-theme-sector-shop .iws-filter-more__content{grid-template-columns:1fr}}
+
+
+/* Editorial merchandising additions */
+.wpbb-clothes-category-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.wpbb-clothes-category-grid a{display:flex;min-height:220px;align-items:flex-end;padding:24px;background:#f4efe8;color:#292524;font-family:Georgia,"Times New Roman",serif;font-size:26px;text-decoration:none}.wpbb-clothes-category-grid a:nth-child(2n){background:#ebe4da}.wpbb-clothes-values{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.wpbb-clothes-values>div{padding:30px;border-top:1px solid #d6d0c8}.wpbb-clothes-newsletter{padding:clamp(36px,6vw,74px);background:#292524;color:#fff;text-align:center}.wpbb-clothes-newsletter p{max-width:640px;margin-inline:auto;color:#e7e5e4}@media(max-width:800px){.wpbb-clothes-category-grid{grid-template-columns:repeat(2,1fr)}.wpbb-clothes-values{grid-template-columns:1fr}}
