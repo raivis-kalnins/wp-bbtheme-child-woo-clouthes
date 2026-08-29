@@ -1,17 +1,18 @@
-# WP BBTheme Child — Woo Clothes
+# Clothes Store v3.3
 
-Editorial WooCommerce child theme for fashion and apparel stores. The existing package slug `wp-bbtheme-child-woo-clouthes` is intentionally retained for upgrade compatibility.
+v3.3 adds the complete demo-page layer: richer About history, Contact form/map/details, five sector demo articles with local media, homepage case studies and Swiper gallery, exclusive FAQ behavior, scroll-to-top, icon-only header search, refreshed Appearance screenshot and additional archive/account polish where relevant. Run **Appearance → Starter Setup → Import / Refresh Starter Website** after upgrading so the stored demo content is rebuilt.
 
-## Automatic store mode
+## 3.3.0
+- Added complete Contact/About/Blog demos, case studies, gallery Swiper, exclusive FAQ accordion, scroll-to-top, icon-only header search, stronger Woo/account/archive styling and refreshed theme previews.
 
-Activating this theme selects WooCommerce project mode and the Woo Support **Store** profile. WP BBuilder, WooCommerce and WP Theme Woo Support are activated when already installed; missing dependencies are surfaced under **Appearance → Starter Setup**.
+# v3.2 update note
 
-## Demo
+See the suite README for the v3.2 navigation, demo-switching and visual-system changes.
 
-Starter setup creates/refreshes store pages, modern Woo Cart/Checkout blocks, filters, colour/size attributes, variable products and a complete 12-product apparel catalogue using bundled local demo media. Included patterns cover editorial hero/story, categories, brand values and newsletter CTA.
+# WP BBTheme Child — Woo Clothes 3.0.0
 
-## Performance
+Editorial fashion WooCommerce child theme. WooCommerce functionality is centralized in **WP Theme Woo Support** while this child owns collection presentation, local demo products/art, Gutenberg patterns and its sector design.
 
-Reusable ecommerce behavior lives in WP Theme Woo Support instead of being duplicated in the child theme. Heavy filter assets are restricted to relevant product/filter screens.
+Starter Setup seeds store pages/products, a real Shop/category menu hierarchy and the Store-profile AJAX filter/results experience. The home demo uses BBuilder + Bootstrap sections and BBuilder Swiper for hero/editorial slider content.
 
-Version 2.0.0; tested up to WordPress 7.1.
+Source is in `src/scss` and `src/js`; run `yarn prod`. No child-theme `clamp()` sizing is used. The historical `clouthes` slug is retained for safe upgrades.
