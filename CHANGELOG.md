@@ -1,3 +1,12 @@
+## 3.7.0 - 2026-08-29
+- Keeps classic PHP WooCommerce shells for catalogue/product, Basket, Checkout/order-received and My Account.
+- Added endpoint-aware My Account presentation for orders, downloads, addresses, account details and password reset.
+- Keeps Woo product-gallery support and polished responsive legacy tables, forms, checkout, confirmation and account layouts.
+## 3.5.0 - 2026-08-29
+- Added premium editorial Journal AJAX archive and single-post presentation.
+- Reworked mobile header behaviour so hamburger and dark-mode controls appear only below 992px without desktop overlap.
+- Normalised WooCommerce, BBuilder and newsletter forms, quantity controls and responsive field grids while keeping Woo functionality in WP Theme Woo Support.
+
 ## 3.3.0
 - Added complete Contact/About/Blog demos, case studies, gallery Swiper, exclusive FAQ accordion, scroll-to-top, icon-only header search, stronger Woo/account/archive styling and refreshed theme previews.
 
@@ -18,3 +27,4 @@
 - Centralized store behavior in WP Theme Woo Support 3.0.0.
 - Added suite header/footer, mega-menu, AJAX search, dark mode and language presentation.
 - Removed stale child assets and all child-theme `clamp()` sizing.
+
