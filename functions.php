@@ -112,7 +112,7 @@ function wpbb_clouthes_demo_profile_premium( $profile ) {
 	$profile['about_title'] = __( 'A quieter wardrobe, built around repeat wear.', 'wp-bbtheme-child-woo-clouthes' );
 	$profile['about_text'] = __( 'Editorial storytelling, confident product imagery and restrained commerce UI keep the focus on material, fit and the collection.', 'wp-bbtheme-child-woo-clouthes' );
 	$profile['stats'] = array(
-		array( '12', __( 'Curated demo pieces', 'wp-bbtheme-child-woo-clouthes' ) ),
+		array( '12', __( 'Curated pieces', 'wp-bbtheme-child-woo-clouthes' ) ),
 		array( '4', __( 'Core wardrobe categories', 'wp-bbtheme-child-woo-clouthes' ) ),
 		array( '3', __( 'Useful size and colour options', 'wp-bbtheme-child-woo-clouthes' ) ),
 		array( '1', __( 'Editorial storefront system', 'wp-bbtheme-child-woo-clouthes' ) ),
@@ -123,8 +123,8 @@ function wpbb_clouthes_demo_profile_premium( $profile ) {
 		array( '03', __( 'Keep', 'wp-bbtheme-child-woo-clouthes' ), __( 'Support the purchase with clear sizing, delivery, returns and care information.', 'wp-bbtheme-child-woo-clouthes' ) ),
 	);
 	$profile['cta_title'] = __( 'Build a collection that feels considered from first scroll to checkout.', 'wp-bbtheme-child-woo-clouthes' );
-	$profile['cta_text'] = __( 'The demo combines editorial content, reusable Gutenberg patterns and practical WooCommerce product discovery.', 'wp-bbtheme-child-woo-clouthes' );
-	$profile['footer_text'] = __( 'A restrained WooCommerce fashion starter for collections, materials and everyday pieces.', 'wp-bbtheme-child-woo-clouthes' );
+	$profile['cta_text'] = __( 'Editorial content and practical WooCommerce discovery work together to make the collection easy to browse.', 'wp-bbtheme-child-woo-clouthes' );
+	$profile['footer_text'] = __( 'A restrained fashion store focused on useful collections, materials and everyday pieces.', 'wp-bbtheme-child-woo-clouthes' );
 	$profile['page_labels'] = array( 'about' => __( 'Our story', 'wp-bbtheme-child-woo-clouthes' ), 'services' => __( 'Materials & care', 'wp-bbtheme-child-woo-clouthes' ), 'industries' => __( 'Collections', 'wp-bbtheme-child-woo-clouthes' ), 'contact' => __( 'Contact', 'wp-bbtheme-child-woo-clouthes' ), 'blog' => __( 'Journal', 'wp-bbtheme-child-woo-clouthes' ) );
 	return $profile;
 }
@@ -172,7 +172,7 @@ function wpbb_clouthes_mega_menu_definitions( $definitions, $profile ) {
 			array( 'title' => __( 'Complete the wardrobe', 'wp-bbtheme-child-woo-clouthes' ), 'links' => array(
 				array( __( 'Trousers', 'wp-bbtheme-child-woo-clouthes' ), __( 'Denim and straightforward tailored shapes.', 'wp-bbtheme-child-woo-clouthes' ), wpbb_clouthes_product_category_url( 'Trousers' ) ),
 				array( __( 'Accessories', 'wp-bbtheme-child-woo-clouthes' ), __( 'Bags, scarves, caps and small leather goods.', 'wp-bbtheme-child-woo-clouthes' ), wpbb_clouthes_product_category_url( 'Accessories' ) ),
-				array( __( 'New arrivals', 'wp-bbtheme-child-woo-clouthes' ), __( 'Browse the latest pieces in the demo collection.', 'wp-bbtheme-child-woo-clouthes' ), $shop ),
+				array( __( 'New arrivals', 'wp-bbtheme-child-woo-clouthes' ), __( 'Browse the latest pieces in the collection.', 'wp-bbtheme-child-woo-clouthes' ), $shop ),
 			) ),
 			array( 'title' => __( 'Useful information', 'wp-bbtheme-child-woo-clouthes' ), 'links' => array(
 				array( __( 'Materials & care', 'wp-bbtheme-child-woo-clouthes' ), __( 'Understand fabric, care and repeat wear.', 'wp-bbtheme-child-woo-clouthes' ), wp_theme_demo_page_url( 'services' ) ),
