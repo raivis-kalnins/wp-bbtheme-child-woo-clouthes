@@ -1,2 +1,53 @@
 @use 'tokens' as *;
-body.wp-theme-sector-clothes{background:$surface}.wp-theme-sector-clothes h1,.wp-theme-sector-clothes h2{font-family:Georgia,'Times New Roman',serif;font-weight:600;letter-spacing:-.03em}.wp-theme-sector-clothes .wpbb-swiper--hero{background:#f6f0ea;border-radius:0}.wp-theme-sector-clothes .wpbb-swiper--hero .wpbb-swiper-slide__media{border-radius:0}.wp-theme-sector-clothes .wp-theme-sector-card{border-radius:0;box-shadow:none}.wp-theme-sector-clothes .wp-theme-card-icon{border-radius:50%;background:#fff8f2}.wp-theme-sector-clothes .wp-theme-about-section{background:#fffdf9}.wp-theme-sector-clothes .wp-theme-industries-section{background:#f6f0ea}.wp-theme-sector-clothes .wp-theme-home-cta{background:#1d1618}.woocommerce ul.products li.product,.iws-filter-products .product{overflow:hidden;border:0!important;border-bottom:1px solid $border!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}.woocommerce ul.products li.product img,.iws-filter-products .product img{transition:transform .35s ease}.woocommerce ul.products li.product:hover img,.iws-filter-products .product:hover img{transform:scale(1.025)}.iws-product-filter{padding:22px!important;border:1px solid $border!important;border-radius:0!important;background:#fff!important}
+ body.wp-theme-sector-clothes {
+  background:$surface
+}
+.wp-theme-sector-clothes h1,.wp-theme-sector-clothes h2 {
+  font-family:Georgia,'Times New Roman',serif;
+  font-weight:600;
+  letter-spacing:-.03em
+}
+.wp-theme-sector-clothes .wpbb-swiper--hero {
+  background:#f6f0ea;
+  border-radius:0
+}
+.wp-theme-sector-clothes .wpbb-swiper--hero .wpbb-swiper-slide__media {
+  border-radius:0
+}
+.wp-theme-sector-clothes .wp-theme-sector-card {
+  border-radius:0;
+  box-shadow:none
+}
+.wp-theme-sector-clothes .wp-theme-card-icon {
+  border-radius:50%;
+  background:#fff8f2
+}
+.wp-theme-sector-clothes .wp-theme-about-section {
+  background:#fffdf9
+}
+.wp-theme-sector-clothes .wp-theme-industries-section {
+  background:#f6f0ea
+}
+.wp-theme-sector-clothes .wp-theme-home-cta {
+  background:#1d1618
+}
+.woocommerce ul.products li.product,.iws-filter-products .product {
+  overflow:hidden;
+  border:0;
+  border-bottom:1px solid $border;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none
+}
+.woocommerce ul.products li.product img,.iws-filter-products .product img {
+  transition:transform .35s ease
+}
+.woocommerce ul.products li.product:hover img,.iws-filter-products .product:hover img {
+  transform:scale(1.025)
+}
+.iws-product-filter {
+  padding:22px;
+  border:1px solid $border;
+  border-radius:0;
+  background:#fff
+}

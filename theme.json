@@ -1,1 +1,52 @@
-{"$schema":"https://schemas.wp.org/trunk/theme.json","version":3,"settings":{"appearanceTools":true,"layout":{"contentSize":"840px","wideSize":"1240px"},"color":{"palette":[{"slug":"ink","name":"Ink","color":"#292524"},{"slug":"bronze","name":"Bronze","color":"#a16207"},{"slug":"linen","name":"Linen","color":"#faf7f2"},{"slug":"white","name":"White","color":"#ffffff"}]},"typography":{"fluid":true}},"styles":{"typography":{"fontFamily":"Arial,Helvetica,sans-serif","lineHeight":"1.65"},"elements":{"heading":{"typography":{"fontFamily":"Georgia,'Times New Roman',serif","fontWeight":"500"}}}}}
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "880px",
+      "wideSize": "1280px"
+    },
+    "color": {
+      "palette": [
+        {
+          "slug": "ink",
+          "name": "Ink",
+          "color": "#292524"
+        },
+        {
+          "slug": "bronze",
+          "name": "Bronze",
+          "color": "#a16207"
+        },
+        {
+          "slug": "linen",
+          "name": "Linen",
+          "color": "#faf7f2"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    "typography": {
+      "fluid": false
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "Arial,Helvetica,sans-serif",
+      "lineHeight": "1.65"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "Georgia,'Times New Roman',serif",
+          "fontWeight": "500"
+        }
+      }
+    }
+  }
+}

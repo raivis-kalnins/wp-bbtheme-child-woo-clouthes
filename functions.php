@@ -7,13 +7,12 @@ add_filter('wp_theme_woo_support_default_profile','wpbb_clouthes_woo_profile');
 
 function wpbb_clouthes_assets() {
     $theme = wp_get_theme();
-    wp_enqueue_style('wpbb_clouthes-meta', get_stylesheet_uri(), array('wp-theme-style'), $theme->get('Version'));
     $manifest = get_stylesheet_directory() . '/dist/.vite/manifest.json';
     if (!is_readable($manifest)) return;
     $data = json_decode((string) file_get_contents($manifest), true);
     if (!is_array($data)) return;
     if (!empty($data['src/scss/public.scss']['file'])) {
-        wp_enqueue_style('wpbb_clouthes-app', get_stylesheet_directory_uri() . '/dist/' . ltrim($data['src/scss/public.scss']['file'], '/'), array('wpbb_clouthes-meta'), $theme->get('Version'));
+        wp_enqueue_style('wpbb_clouthes-app', get_stylesheet_directory_uri() . '/dist/' . ltrim($data['src/scss/public.scss']['file'], '/'), array(), $theme->get('Version'));
         if (function_exists('wp_theme_sector_customizer_css')) wp_add_inline_style('wpbb_clouthes-app', wp_theme_sector_customizer_css('#772f3a', '4px', '--sector-primary', '--sector-radius'));
     }
     if (!empty($data['src/js/main.js']['file'])) wp_enqueue_script('wpbb_clouthes-app', get_stylesheet_directory_uri() . '/dist/' . ltrim($data['src/js/main.js']['file'], '/'), array(), $theme->get('Version'), true);
@@ -43,7 +42,7 @@ function wpbb_clouthes_demo_profile( $profile ) {
 		'about_image' => $assets . 'utility-overshirt.jpg',
 		'primary_label' => __( 'Shop the collection', 'wp-bbtheme-child-woo-clouthes' ), 'primary_url' => '#shop',
 		'secondary_label' => __( 'Our approach', 'wp-bbtheme-child-woo-clouthes' ), 'secondary_url' => '#services',
-		'industries' => array( __( 'New arrivals', 'wp-bbtheme-child-woo-clouthes' ), __( 'Women', 'wp-bbtheme-child-woo-clouthes' ), __( 'Men', 'wp-bbtheme-child-woo-clouthes' ), __( 'Accessories', 'wp-bbtheme-child-woo-clouthes' ) ),
+		'industries' => array( __( 'Women', 'wp-bbtheme-child-woo-clouthes' ), __( 'Men', 'wp-bbtheme-child-woo-clouthes' ), __( 'Kids', 'wp-bbtheme-child-woo-clouthes' ), __( 'Accessories', 'wp-bbtheme-child-woo-clouthes' ) ),
 		'services' => array(
 			array( __( 'Better materials', 'wp-bbtheme-child-woo-clouthes' ), __( 'Fabrics selected for comfort, character and useful wear.', 'wp-bbtheme-child-woo-clouthes' ) ),
 			array( __( 'Considered fits', 'wp-bbtheme-child-woo-clouthes' ), __( 'Clear sizing and shapes designed for repeat use.', 'wp-bbtheme-child-woo-clouthes' ) ),
@@ -67,6 +66,10 @@ function wpbb_clouthes_demo_products() {
 		array( 'simple', 'Cotton Cap', 'Accessories', 26, 'An unstructured cotton cap for everyday wear.' ),
 		array( 'variable', 'Utility Overshirt', 'Outerwear', 110, 'A practical layer with generous patch pockets.' ),
 		array( 'variable', 'Lightweight Parka', 'Outerwear', 145, 'Weather-ready outerwear with a clean minimal finish.' ),
+        array( 'variable', 'Women Relaxed Poplin Shirt', 'Women', 72, 'An easy women’s poplin shirt with a softly tailored shape.' ),
+        array( 'variable', 'Women Merino Cardigan', 'Women', 98, 'Fine merino layering with a clean cropped proportion.' ),
+        array( 'variable', 'Kids Cotton Tee', 'Kids', 24, 'Soft midweight cotton jersey made for everyday movement.' ),
+        array( 'variable', 'Kids Lightweight Overshirt', 'Kids', 58, 'A practical lightweight layer with easy patch pockets.' ),
 	);
 }
 add_filter( 'wp_theme_woo_demo_product_data', 'wpbb_clouthes_demo_products' );
@@ -76,6 +79,7 @@ function wpbb_clouthes_demo_product_image( $path, $product, $index ) {
 		'relaxed-cotton-shirt.jpg', 'classic-oxford-shirt.jpg', 'essential-t-shirt.jpg', 'merino-crew-knit.jpg',
 		'straight-leg-trouser.jpg', 'everyday-denim.jpg', 'canvas-weekend-bag.jpg', 'leather-card-holder.jpg',
 		'wool-scarf.jpg', 'cotton-cap.jpg', 'utility-overshirt.jpg', 'lightweight-parka.jpg',
+        'relaxed-cotton-shirt.jpg', 'merino-crew-knit.jpg', 'essential-t-shirt.jpg', 'utility-overshirt.jpg',
 	);
 
 	return isset( $images[ $index ] ) ? get_stylesheet_directory() . '/assets/img/products/' . $images[ $index ] : $path;
@@ -112,8 +116,8 @@ function wpbb_clouthes_demo_profile_premium( $profile ) {
 	$profile['about_title'] = __( 'A quieter wardrobe, built around repeat wear.', 'wp-bbtheme-child-woo-clouthes' );
 	$profile['about_text'] = __( 'Editorial storytelling, confident product imagery and restrained commerce UI keep the focus on material, fit and the collection.', 'wp-bbtheme-child-woo-clouthes' );
 	$profile['stats'] = array(
-		array( '12', __( 'Curated pieces', 'wp-bbtheme-child-woo-clouthes' ) ),
-		array( '4', __( 'Core wardrobe categories', 'wp-bbtheme-child-woo-clouthes' ) ),
+		array( '16', __( 'Curated pieces', 'wp-bbtheme-child-woo-clouthes' ) ),
+		array( '3', __( 'Women, men and kids edits', 'wp-bbtheme-child-woo-clouthes' ) ),
 		array( '3', __( 'Useful size and colour options', 'wp-bbtheme-child-woo-clouthes' ) ),
 		array( '1', __( 'Editorial storefront system', 'wp-bbtheme-child-woo-clouthes' ) ),
 	);
@@ -164,21 +168,21 @@ function wpbb_clouthes_mega_menu_definitions( $definitions, $profile ) {
 		'heading'    => __( 'Everyday pieces, easier to browse.', 'wp-bbtheme-child-woo-clouthes' ),
 		'intro'      => __( 'Move through the collection by garment, material and the pieces you need now.', 'wp-bbtheme-child-woo-clouthes' ),
 		'columns'    => array(
-			array( 'title' => __( 'Clothing', 'wp-bbtheme-child-woo-clouthes' ), 'links' => array(
-				array( __( 'Shirts', 'wp-bbtheme-child-woo-clouthes' ), __( 'Oxford, cotton and relaxed everyday shirts.', 'wp-bbtheme-child-woo-clouthes' ), wpbb_clouthes_product_category_url( 'Shirts' ) ),
-				array( __( 'Knitwear', 'wp-bbtheme-child-woo-clouthes' ), __( 'Merino and useful layering pieces.', 'wp-bbtheme-child-woo-clouthes' ), wpbb_clouthes_product_category_url( 'Knitwear' ) ),
-				array( __( 'Outerwear', 'wp-bbtheme-child-woo-clouthes' ), __( 'Overshirts and lighter weather layers.', 'wp-bbtheme-child-woo-clouthes' ), wpbb_clouthes_product_category_url( 'Outerwear' ) ),
-			) ),
-			array( 'title' => __( 'Complete the wardrobe', 'wp-bbtheme-child-woo-clouthes' ), 'links' => array(
-				array( __( 'Trousers', 'wp-bbtheme-child-woo-clouthes' ), __( 'Denim and straightforward tailored shapes.', 'wp-bbtheme-child-woo-clouthes' ), wpbb_clouthes_product_category_url( 'Trousers' ) ),
-				array( __( 'Accessories', 'wp-bbtheme-child-woo-clouthes' ), __( 'Bags, scarves, caps and small leather goods.', 'wp-bbtheme-child-woo-clouthes' ), wpbb_clouthes_product_category_url( 'Accessories' ) ),
-				array( __( 'New arrivals', 'wp-bbtheme-child-woo-clouthes' ), __( 'Browse the latest pieces in the collection.', 'wp-bbtheme-child-woo-clouthes' ), $shop ),
-			) ),
-			array( 'title' => __( 'Useful information', 'wp-bbtheme-child-woo-clouthes' ), 'links' => array(
-				array( __( 'Materials & care', 'wp-bbtheme-child-woo-clouthes' ), __( 'Understand fabric, care and repeat wear.', 'wp-bbtheme-child-woo-clouthes' ), wp_theme_demo_page_url( 'services' ) ),
-				array( __( 'Our story', 'wp-bbtheme-child-woo-clouthes' ), __( 'The principles behind the collection.', 'wp-bbtheme-child-woo-clouthes' ), wp_theme_demo_page_url( 'about' ) ),
-				array( __( 'My account', 'wp-bbtheme-child-woo-clouthes' ), __( 'Orders, addresses and account details.', 'wp-bbtheme-child-woo-clouthes' ), function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'myaccount' ) : wp_login_url() ),
-			) ),
+            array( 'title' => __( 'Shop by wearer', 'wp-bbtheme-child-woo-clouthes' ), 'links' => array(
+                array( __( 'Women', 'wp-bbtheme-child-woo-clouthes' ), __( 'Relaxed shirting, knitwear and considered layers.', 'wp-bbtheme-child-woo-clouthes' ), wpbb_clouthes_product_category_url( 'Women' ) ),
+                array( __( 'Men', 'wp-bbtheme-child-woo-clouthes' ), __( 'Everyday shirts, trousers, denim and outerwear.', 'wp-bbtheme-child-woo-clouthes' ), wpbb_clouthes_product_category_url( 'Men' ) ),
+                array( __( 'Kids', 'wp-bbtheme-child-woo-clouthes' ), __( 'Comfortable everyday pieces with easy sizing.', 'wp-bbtheme-child-woo-clouthes' ), wpbb_clouthes_product_category_url( 'Kids' ) ),
+            ) ),
+            array( 'title' => __( 'Shop by piece', 'wp-bbtheme-child-woo-clouthes' ), 'links' => array(
+                array( __( 'Outerwear', 'wp-bbtheme-child-woo-clouthes' ), __( 'Overshirts and lighter weather layers.', 'wp-bbtheme-child-woo-clouthes' ), wpbb_clouthes_product_category_url( 'Outerwear' ) ),
+                array( __( 'Accessories', 'wp-bbtheme-child-woo-clouthes' ), __( 'Bags, scarves, caps and small leather goods.', 'wp-bbtheme-child-woo-clouthes' ), wpbb_clouthes_product_category_url( 'Accessories' ) ),
+                array( __( 'New arrivals', 'wp-bbtheme-child-woo-clouthes' ), __( 'Browse the newest pieces across every edit.', 'wp-bbtheme-child-woo-clouthes' ), $shop ),
+            ) ),
+            array( 'title' => __( 'Useful information', 'wp-bbtheme-child-woo-clouthes' ), 'links' => array(
+                array( __( 'Materials & care', 'wp-bbtheme-child-woo-clouthes' ), __( 'Understand fabric, care and repeat wear.', 'wp-bbtheme-child-woo-clouthes' ), wp_theme_demo_page_url( 'services' ) ),
+                array( __( 'Our story', 'wp-bbtheme-child-woo-clouthes' ), __( 'The principles behind the collection.', 'wp-bbtheme-child-woo-clouthes' ), wp_theme_demo_page_url( 'about' ) ),
+                array( __( 'My account', 'wp-bbtheme-child-woo-clouthes' ), __( 'Orders, addresses and account details.', 'wp-bbtheme-child-woo-clouthes' ), function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'myaccount' ) : wp_login_url() ),
+            ) ),
 		),
 	);
 	return $definitions;
@@ -223,3 +227,213 @@ function wpbb_clouthes_woocommerce_legacy_body_class_v36( $classes ) {
     return $classes;
 }
 add_filter( 'body_class', 'wpbb_clouthes_woocommerce_legacy_body_class_v36' );
+
+/** v3.8.10.7: seed clear Women / Men / Kids shop edits for the starter. */
+function wpbb_clouthes_seed_wearer_categories_v107() {
+    if ( ! taxonomy_exists( 'product_cat' ) ) return;
+    $ids = array();
+    foreach ( array( 'Women', 'Men', 'Kids' ) as $name ) {
+        $term = get_term_by( 'name', $name, 'product_cat' );
+        if ( ! $term ) {
+            $created = wp_insert_term( $name, 'product_cat' );
+            if ( ! is_wp_error( $created ) ) $ids[$name] = (int) $created['term_id'];
+        } else $ids[$name] = (int) $term->term_id;
+    }
+    $map = array(
+        'Women Relaxed Poplin Shirt'=>'Women','Women Merino Cardigan'=>'Women',
+        'Kids Cotton Tee'=>'Kids','Kids Lightweight Overshirt'=>'Kids',
+        'Relaxed Cotton Shirt'=>'Men','Classic Oxford Shirt'=>'Men','Essential T-Shirt'=>'Men','Merino Crew Knit'=>'Men',
+        'Straight Leg Trouser'=>'Men','Everyday Denim'=>'Men','Utility Overshirt'=>'Men','Lightweight Parka'=>'Men',
+    );
+    foreach ( $map as $title => $group ) {
+        $product = get_page_by_title( $title, OBJECT, 'product' );
+        if ( $product && ! empty( $ids[$group] ) ) wp_set_object_terms( $product->ID, array( $ids[$group] ), 'product_cat', true );
+    }
+}
+add_action( 'wp_theme_after_demo_import', 'wpbb_clouthes_seed_wearer_categories_v107', 35 );
+
+
+/** v3.8.10.7: complete clothing single-product editorial content. */
+function wpbb_clouthes_seed_product_content_v107( $page_id = 0, $profile = array() ) {
+    if ( ! post_type_exists( 'product' ) ) return;
+    foreach ( get_posts(array('post_type'=>'product','post_status'=>'publish','posts_per_page'=>-1,'fields'=>'ids')) as $id ) {
+        if ( trim( wp_strip_all_tags( (string) get_post_field('post_content',$id) ) ) ) continue;
+        $content='<h2>Fit and details</h2><p>A considered wardrobe piece with practical fabric, fit and care information presented in one place.</p><h2>Styling notes</h2><p>Designed to layer easily with the Women, Men and Kids edits in the starter catalogue.</p><h2>Care</h2><p>Follow the garment care label and store clean and dry between wears.</p>';
+        wp_update_post(array('ID'=>$id,'post_content'=>$content));
+    }
+}
+add_action('wp_theme_after_demo_import','wpbb_clouthes_seed_product_content_v107',45,2);
+
+/**
+ * v3.8.10.20: keep editable Mega Menu content out of public discovery / SEO.
+ * The parent already registers these objects as private; child filters make the
+ * intent explicit for Core XML sitemaps and common SEO plugins too.
+ */
+function wpbb_child_private_megamenu_post_type_args( $args, $post_type ) {
+    if ( 'megamenu' !== $post_type ) return $args;
+    $args['public'] = false;
+    $args['publicly_queryable'] = false;
+    $args['exclude_from_search'] = true;
+    $args['has_archive'] = false;
+    $args['rewrite'] = false;
+    $args['query_var'] = false;
+    return $args;
+}
+add_filter( 'register_post_type_args', 'wpbb_child_private_megamenu_post_type_args', 20, 2 );
+
+function wpbb_child_private_megamenu_taxonomy_args( $args, $taxonomy ) {
+    if ( 'megamenu-cat' !== $taxonomy ) return $args;
+    $args['public'] = false;
+    $args['publicly_queryable'] = false;
+    $args['rewrite'] = false;
+    $args['query_var'] = false;
+    return $args;
+}
+add_filter( 'register_taxonomy_args', 'wpbb_child_private_megamenu_taxonomy_args', 20, 2 );
+
+function wpbb_child_core_sitemap_post_types( $post_types ) {
+    unset( $post_types['megamenu'] );
+    return $post_types;
+}
+add_filter( 'wp_sitemaps_post_types', 'wpbb_child_core_sitemap_post_types', 20 );
+
+function wpbb_child_core_sitemap_taxonomies( $taxonomies ) {
+    unset( $taxonomies['megamenu-cat'] );
+    return $taxonomies;
+}
+add_filter( 'wp_sitemaps_taxonomies', 'wpbb_child_core_sitemap_taxonomies', 20 );
+
+function wpbb_child_mega_robots( $robots ) {
+    if ( is_singular( 'megamenu' ) || is_tax( 'megamenu-cat' ) ) {
+        $robots['noindex'] = true;
+        $robots['nofollow'] = true;
+    }
+    return $robots;
+}
+add_filter( 'wp_robots', 'wpbb_child_mega_robots', 20 );
+
+function wpbb_child_yoast_exclude_megamenu_post_type( $excluded, $post_type ) {
+    return 'megamenu' === $post_type ? true : $excluded;
+}
+add_filter( 'wpseo_sitemap_exclude_post_type', 'wpbb_child_yoast_exclude_megamenu_post_type', 20, 2 );
+
+function wpbb_child_yoast_exclude_megamenu_taxonomy( $excluded, $taxonomy ) {
+    return 'megamenu-cat' === $taxonomy ? true : $excluded;
+}
+add_filter( 'wpseo_sitemap_exclude_taxonomy', 'wpbb_child_yoast_exclude_megamenu_taxonomy', 20, 2 );
+
+function wpbb_child_yoast_mega_robots( $robots ) {
+    if ( is_singular( 'megamenu' ) || is_tax( 'megamenu-cat' ) ) return 'noindex, nofollow';
+    return $robots;
+}
+add_filter( 'wpseo_robots', 'wpbb_child_yoast_mega_robots', 20 );
+
+
+/**
+ * v3.8.10.21: global request-a-quote UI is opt-in by child theme.
+ * Sector themes with their own quote journeys can keep it; the rest do not
+ * expose an unrelated floating "My Quote" control or public route.
+ */
+if ( ! function_exists( 'wpbb_child_request_quote_enabled' ) ) {
+    function wpbb_child_request_quote_enabled() {
+        $enabled_themes = array(
+            'wp-bbtheme-child-automotive',
+            'wp-bbtheme-child-building-services',
+            'wp-bbtheme-child-insurance',
+            'wp-bbtheme-child-logistics',
+            'wp-bbtheme-child-medicine',
+            'wp-bbtheme-child-woo-tech-shop',
+        );
+        $enabled = in_array( get_stylesheet(), $enabled_themes, true );
+        return (bool) apply_filters( 'wpbb_child_request_quote_enabled', $enabled, get_stylesheet() );
+    }
+}
+
+function wpbb_child_request_quote_body_class( $classes ) {
+    $classes[] = wpbb_child_request_quote_enabled() ? 'wpbb-request-quote-enabled' : 'wpbb-request-quote-disabled';
+    return $classes;
+}
+add_filter( 'body_class', 'wpbb_child_request_quote_body_class', 30 );
+
+function wpbb_child_request_quote_menu_items( $items ) {
+    if ( wpbb_child_request_quote_enabled() ) return $items;
+    $target = trim( (string) wp_parse_url( home_url( '/request-a-quote/' ), PHP_URL_PATH ), '/' );
+    foreach ( $items as $key => $item ) {
+        $path = trim( (string) wp_parse_url( $item->url, PHP_URL_PATH ), '/' );
+        if ( $target && $path === $target ) unset( $items[ $key ] );
+    }
+    return $items;
+}
+add_filter( 'wp_nav_menu_objects', 'wpbb_child_request_quote_menu_items', 30 );
+
+function wpbb_child_request_quote_disable_route() {
+    if ( wpbb_child_request_quote_enabled() ) return;
+    $request = isset( $GLOBALS['wp']->request ) ? trim( (string) $GLOBALS['wp']->request, '/' ) : '';
+    if ( ! is_page( 'request-a-quote' ) && 'request-a-quote' !== $request ) return;
+
+    global $wp_query;
+    if ( $wp_query ) $wp_query->set_404();
+    status_header( 404 );
+    nocache_headers();
+    $template = get_404_template();
+    if ( $template ) {
+        include $template;
+        exit;
+    }
+    wp_die( esc_html__( 'Page not found.', 'wp-bbtheme-child' ), esc_html__( 'Not found', 'wp-bbtheme-child' ), array( 'response' => 404 ) );
+}
+add_action( 'template_redirect', 'wpbb_child_request_quote_disable_route', 1 );
+
+function wpbb_child_request_quote_sitemap_args( $args, $post_type ) {
+    if ( wpbb_child_request_quote_enabled() || 'page' !== $post_type ) return $args;
+    $page = get_page_by_path( 'request-a-quote' );
+    if ( $page ) {
+        $excluded = isset( $args['post__not_in'] ) ? (array) $args['post__not_in'] : array();
+        $excluded[] = (int) $page->ID;
+        $args['post__not_in'] = array_values( array_unique( $excluded ) );
+    }
+    return $args;
+}
+add_filter( 'wp_sitemaps_posts_query_args', 'wpbb_child_request_quote_sitemap_args', 30, 2 );
+
+require_once get_stylesheet_directory() . '/inc/seo-guardrails.php';
+
+/** v3.8.10.24: identify generated legal pages independently of translated slugs. */
+function wpbb_child_legal_page_body_class_v381024( $classes ) {
+    if ( ! is_page() ) return $classes;
+    $post = get_queried_object();
+    if ( ! $post instanceof WP_Post ) return $classes;
+
+    $is_legal = function_exists( 'is_privacy_policy' ) && is_privacy_policy();
+    if ( ! $is_legal && false !== strpos( (string) $post->post_content, 'wp-theme-legal-section' ) ) {
+        $is_legal = true;
+    }
+    if ( $is_legal ) $classes[] = 'wpbb-legal-page';
+    return array_values( array_unique( $classes ) );
+}
+add_filter( 'body_class', 'wpbb_child_legal_page_body_class_v381024', 40 );
+
+/** v3.8.10.25: remove generated empty spacing without touching authored copy. */
+if ( ! function_exists( 'wpbb_child_remove_empty_paragraphs_v381025' ) ) {
+    function wpbb_child_remove_empty_paragraphs_v381025( $content ) {
+        if ( is_admin() || ! is_string( $content ) || '' === $content ) return $content;
+        return (string) preg_replace(
+            '~<p(?:\\s[^>]*)?>(?:\\s|&nbsp;|&#160;|<br\\s*/?>)*</p>~i',
+            '',
+            $content
+        );
+    }
+}
+add_filter( 'the_content', 'wpbb_child_remove_empty_paragraphs_v381025', 120 );
+
+/** v3.8.10.25: do not output a completely empty CTA block above the footer. */
+if ( ! function_exists( 'wpbb_child_remove_empty_cta_v381025' ) ) {
+    function wpbb_child_remove_empty_cta_v381025( $block_content, $block ) {
+        if ( empty( $block['blockName'] ) || 'wpbb/cta-section' !== $block['blockName'] || ! is_string( $block_content ) ) return $block_content;
+        if ( preg_match( '~<(?:img|picture|video|iframe|form|button|a)\\b~i', $block_content ) ) return $block_content;
+        $plain = trim( html_entity_decode( wp_strip_all_tags( $block_content ), ENT_QUOTES | ENT_HTML5, get_bloginfo( 'charset' ) ) );
+        return '' === $plain ? '' : $block_content;
+    }
+}
+add_filter( 'render_block', 'wpbb_child_remove_empty_cta_v381025', 120, 2 );
+
