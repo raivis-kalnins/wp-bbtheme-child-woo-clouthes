@@ -1,0 +1,236 @@
+/* WP BBTheme Child Woo Clothes 3.8.11.51
+ * Tech Shop 3.8.11.52 source-of-truth finish for the deterministic homepage.
+ */
+:root{
+  --cl151-accent:#8f3149;
+  --cl151-accent-dark:#692236;
+  --cl151-accent-soft:#f5e7eb;
+  --cl151-ink:#1d2637;
+  --cl151-copy:#59616d;
+  --cl151-line:#e7dedb;
+  --cl151-soft:#f7f1ec;
+  --cl151-paper:#fffdfa;
+  --cl151-dark:#21161a;
+  --cl151-shell:1320px;
+  --cl151-gutter:28px;
+  --cl151-radius:12px;
+  --cl151-shadow:0 10px 28px rgba(41,25,30,.07);
+}
+html body.wpbb-v151{background:var(--cl151-paper)!important;color:var(--cl151-ink)!important}
+html body.wpbb-v151 *,html body.wpbb-v151 *::before,html body.wpbb-v151 *::after{box-sizing:border-box}
+
+/* --------------------------------------------------------------------------
+ * Remove the unstable parent homepage header completely. The fixed Tech Shop
+ * succeeds because one component owns its header geometry; Clothes now does
+ * the same on the front page.
+ * ----------------------------------------------------------------------- */
+html body.wpbb-v151 :is(.wp-theme-site-header,.wp-theme-utility-bar,.wp-theme-header-overlay,.wp-theme-header-search-panel){display:none!important}
+html body.wpbb-v151 #wp-theme-main{margin-top:0!important;padding-top:0!important}
+
+.clothes151-shell{box-sizing:border-box;width:min(var(--cl151-shell),calc(100% - (var(--cl151-gutter) * 2)));margin-inline:auto}
+.clothes151-header{position:relative;z-index:3000;width:100%;background:#fff;color:var(--cl151-ink);font-family:var(--cl149-body-font,Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif)}
+.clothes151-utility{min-height:30px;background:var(--cl151-dark);color:#fff}
+.clothes151-utility__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:30px;font-size:11px;line-height:1.2}
+.clothes151-utility__inner>span{color:#fff;opacity:.9}
+.clothes151-utility nav{display:flex;align-items:center;gap:18px}
+.clothes151-utility a{color:#fff!important;text-decoration:none!important;opacity:.92}
+.clothes151-utility a:hover{opacity:1;text-decoration:underline!important}
+.clothes151-nav-shell{background:#fff;border-bottom:1px solid var(--cl151-line);box-shadow:0 1px 0 rgba(31,24,27,.025)}
+.clothes151-nav{display:grid;grid-template-columns:minmax(190px,230px) minmax(0,1fr) auto;align-items:center;gap:30px;min-height:80px}
+.clothes151-brand{display:inline-flex;align-items:center;gap:11px;min-width:0;color:var(--cl151-ink)!important;text-decoration:none!important}
+.clothes151-brand__mark{display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:var(--cl151-accent);color:#fff;font-family:Georgia,"Times New Roman",serif;font-size:19px;font-weight:800;line-height:1}
+.clothes151-brand__text{display:flex;align-items:baseline;gap:4px;min-width:0;white-space:nowrap}
+.clothes151-brand__text strong{color:var(--cl151-ink);font-size:19px;font-weight:820;letter-spacing:-.025em}
+.clothes151-brand__text span{color:var(--cl151-accent);font-size:14px;font-weight:760}
+.clothes151-primary-nav{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;height:80px}
+.clothes151-primary-nav>a{position:relative;display:inline-flex;align-items:center;height:80px;padding:0;color:var(--cl151-ink)!important;font-size:13px;font-weight:720;line-height:1;text-decoration:none!important;white-space:nowrap}
+.clothes151-primary-nav>a::after{content:"";position:absolute;left:50%;bottom:17px;width:5px;height:5px;border-radius:50%;background:var(--cl151-accent);opacity:0;transform:translateX(-50%) scale(.6);transition:opacity .18s ease,transform .18s ease}
+.clothes151-primary-nav>a:is(:hover,:focus-visible,.is-current){color:var(--cl151-accent)!important}
+.clothes151-primary-nav>a:is(:hover,:focus-visible,.is-current)::after{opacity:1;transform:translateX(-50%) scale(1)}
+.clothes151-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;white-space:nowrap}
+.clothes151-actions>a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 13px;border:1px solid var(--cl151-line);border-radius:9px;background:#fff;color:var(--cl151-ink)!important;font-size:12px;font-weight:720;text-decoration:none!important}
+.clothes151-actions>a:hover{border-color:#d4c3c8;color:var(--cl151-accent)!important}
+.clothes151-actions .clothes151-cart{border-color:var(--cl151-accent);background:var(--cl151-accent);color:#fff!important}
+.clothes151-actions .clothes151-cart:hover{border-color:var(--cl151-accent-dark);background:var(--cl151-accent-dark);color:#fff!important}
+.clothes151-cart span{display:grid;place-items:center;min-width:18px;height:18px;margin-left:7px;padding:0 5px;border-radius:999px;background:rgba(255,255,255,.18);font-size:10px}
+.clothes151-menu-toggle{display:none}
+
+/* One measured horizontal owner, matching the fixed Tech Shop approach. */
+html body.wpbb-v151 .clothes149-rail{box-sizing:border-box;width:min(var(--cl151-shell),calc(100% - (var(--cl151-gutter) * 2)))!important;max-width:none!important;margin-inline:auto!important;padding-inline:0!important}
+html body.wpbb-v151 .clothes149-section{padding-top:66px!important;padding-bottom:66px!important}
+html body.wpbb-v151 .clothes149-heading{margin-bottom:30px!important}
+html body.wpbb-v151 .clothes149-heading h2{color:var(--cl151-ink)!important;max-width:780px!important;font-size:clamp(34px,3vw,45px)!important;line-height:1.03!important}
+html body.wpbb-v151 .clothes149-eyebrow{color:var(--cl151-accent)!important}
+html body.wpbb-v151 .clothes149-card{border-color:var(--cl151-line)!important;border-radius:var(--cl151-radius)!important;background:#fff!important;box-shadow:var(--cl151-shadow)!important}
+html body.wpbb-v151 .clothes149-card :is(h2,h3,h4){color:var(--cl151-ink)!important}
+html body.wpbb-v151 .clothes149-card p{color:var(--cl151-copy)!important}
+
+/* --------------------------------------------------------------------------
+ * Hero: fashion content with the fixed Tech Shop proportions. No parent slider,
+ * no numbered controls, and only two simple dots inside the hero.
+ * ----------------------------------------------------------------------- */
+html body.wpbb-v151 .clothes149-hero{height:590px!important;background:#fbefec!important;border-bottom:1px solid #f0e3df!important;overflow:hidden!important}
+html body.wpbb-v151 .clothes149-hero__media{inset:0 0 0 auto!important;width:54%!important;height:100%!important;background:#f0dfdb!important}
+html body.wpbb-v151 .clothes149-hero__media img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center;filter:none!important;opacity:1!important;visibility:visible!important}
+html body.wpbb-v151 .clothes149-hero__slide::after{background:linear-gradient(90deg,#fffdfb 0%,#fffdfb 33%,rgba(255,253,251,.98) 43%,rgba(255,253,251,.72) 55%,rgba(255,253,251,.16) 74%,rgba(255,253,251,0) 88%)!important}
+html body.wpbb-v151 .clothes149-hero__rail{align-items:flex-start!important;padding-top:76px!important;padding-bottom:190px!important}
+html body.wpbb-v151 .clothes149-hero__copy{width:min(600px,48%)!important;max-width:600px!important}
+html body.wpbb-v151 .clothes149-hero__copy :is(h1,h2){margin:0 0 16px!important;color:var(--cl151-ink)!important;font-size:clamp(48px,4vw,66px)!important;font-weight:760!important;line-height:.98!important;letter-spacing:-.052em!important}
+html body.wpbb-v151 .clothes149-hero__text{max-width:560px!important;margin-bottom:22px!important;color:var(--cl151-copy)!important;font-size:16px!important;line-height:1.58!important}
+html body.wpbb-v151 .clothes149-button--primary{background:var(--cl151-accent)!important;border-color:var(--cl151-accent)!important;color:#fff!important}
+html body.wpbb-v151 .clothes149-button--primary:hover{background:var(--cl151-accent-dark)!important;border-color:var(--cl151-accent-dark)!important;color:#fff!important}
+html body.wpbb-v151 .clothes149-hero__tools{left:50%!important;right:auto!important;bottom:52px!important;width:min(var(--cl151-shell),calc(100% - (var(--cl151-gutter) * 2)))!important;max-width:none!important;transform:translateX(-50%)!important}
+html body.wpbb-v151 .clothes149-search{grid-template-columns:minmax(0,1fr) 190px 112px!important;width:min(760px,64%)!important;max-width:760px!important;gap:0!important;padding:6px!important;border:1px solid rgba(112,66,77,.18)!important;border-radius:12px!important;background:#fff!important;box-shadow:0 12px 30px rgba(60,37,43,.12)!important;overflow:hidden!important}
+html body.wpbb-v151 .clothes149-search :is(input[type="search"],select){height:44px!important;margin:0!important;border:0!important;border-right:1px solid #eadfdb!important;border-radius:0!important;background:#fff!important;color:var(--cl151-ink)!important;font-size:13px!important;box-shadow:none!important}
+html body.wpbb-v151 .clothes149-search input[type="search"]{padding-left:14px!important}
+html body.wpbb-v151 .clothes149-search select{padding-inline:13px 30px!important}
+html body.wpbb-v151 .clothes149-search button{height:44px!important;margin:0!important;border:0!important;border-radius:8px!important;background:var(--cl151-accent)!important;color:#fff!important;font-size:12px!important;font-weight:760!important}
+html body.wpbb-v151 .clothes149-search button:hover{background:var(--cl151-accent-dark)!important}
+html body.wpbb-v151 .clothes149-popular{width:min(760px,64%)!important;margin-top:10px!important;gap:7px 14px!important;color:#776a6f!important;font-size:10px!important}
+html body.wpbb-v151 .clothes149-popular a{color:#51464a!important;font-weight:700!important;text-decoration:none!important}
+html body.wpbb-v151 .clothes149-popular a:hover{color:var(--cl151-accent)!important}
+html body.wpbb-v151 .clothes149-hero__pager{position:absolute!important;left:50%!important;right:auto!important;bottom:18px!important;z-index:30!important;display:flex!important;align-items:center!important;gap:8px!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;transform:translateX(-50%)!important}
+html body.wpbb-v151 .clothes149-hero__pager button{display:block!important;width:9px!important;height:9px!important;min-width:9px!important;min-height:9px!important;margin:0!important;padding:0!important;border:0!important;border-radius:50%!important;background:#d7bcc4!important;color:transparent!important;font-size:0!important;line-height:0!important;box-shadow:0 0 0 1px rgba(143,49,73,.07)!important;transition:background-color .18s ease,transform .18s ease!important}
+html body.wpbb-v151 .clothes149-hero__pager button.is-active{width:9px!important;height:9px!important;background:var(--cl151-accent)!important;transform:scale(1.12)!important}
+html body.wpbb-v151 .clothes149-hero__pager button:focus-visible{outline:3px solid rgba(143,49,73,.22)!important;outline-offset:3px!important}
+
+/* Partners are deterministic marks rather than fragile parent-theme images. */
+html body.wpbb-v151 .clothes149-partners{padding:24px 0 26px!important;border-color:#eee4e0!important;background:#fff!important}
+html body.wpbb-v151 .clothes149-partners__label{margin-bottom:14px!important;color:#82747a!important}
+html body.wpbb-v151 .clothes149-partners__grid{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:12px!important}
+html body.wpbb-v151 .clothes149-partner{display:flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;height:64px!important;padding:0 12px!important;border:1px solid var(--cl151-line)!important;border-radius:10px!important;background:#fff!important;box-shadow:0 5px 14px rgba(45,28,33,.035)!important;color:var(--cl151-ink)!important}
+html body.wpbb-v151 .clothes149-partner>img{display:none!important}
+.clothes151-partner-mark{display:grid;place-items:center;width:30px;height:30px;flex:0 0 30px;border-radius:9px;background:var(--cl151-accent-soft);color:var(--cl151-accent);font-family:Georgia,"Times New Roman",serif;font-size:14px;font-weight:800;line-height:1}
+.clothes151-partner-mark--2,.clothes151-partner-mark--5{border-radius:50%}
+.clothes151-partner-mark--3{border-radius:4px}
+html body.wpbb-v151 .clothes149-partner>span:last-child{color:var(--cl151-ink)!important;font-size:12px!important;font-weight:720!important;white-space:nowrap!important}
+
+/* Section/card consistency and readable palette. */
+html body.wpbb-v151 .clothes149-values{padding:28px 0 56px!important;background:#fff!important}
+html body.wpbb-v151 .clothes149-value{min-height:158px!important}
+html body.wpbb-v151 .clothes149-section--soft{background:var(--cl151-soft)!important}
+html body.wpbb-v151 .clothes149-section--white{background:var(--cl151-paper)!important}
+html body.wpbb-v151 .clothes149-category__media,
+html body.wpbb-v151 .clothes149-product__media,
+html body.wpbb-v151 .clothes149-blog-card__media{background:#eee6e1!important}
+html body.wpbb-v151 .clothes149-media-text{gap:64px!important}
+html body.wpbb-v151 .clothes149-media-text__media{border-radius:12px!important;background:#eee6e1!important}
+html body.wpbb-v151 .clothes149-media-text__copy :is(h1,h2,h3){color:var(--cl151-ink)!important}
+html body.wpbb-v151 .clothes149-media-text__copy>p:not(.clothes149-eyebrow){color:var(--cl151-copy)!important}
+html body.wpbb-v151 .clothes149-stat{border-color:var(--cl151-line)!important;background:#fff!important;color:var(--cl151-ink)!important}
+html body.wpbb-v151 .clothes149-stat strong{color:var(--cl151-ink)!important}
+html body.wpbb-v151 .clothes149-stat span{color:var(--cl151-copy)!important}
+html body.wpbb-v151 .clothes149-gallery__item{background:#e9dfda!important}
+
+/* Product cards: force validated local media to occupy the full card slot. */
+html body.wpbb-v151 .clothes149-products{align-items:stretch!important}
+html body.wpbb-v151 .clothes149-product{border-color:var(--cl151-line)!important;background:#fff!important;box-shadow:var(--cl151-shadow)!important}
+html body.wpbb-v151 .clothes149-product__media{position:relative!important;display:block!important;width:100%!important;aspect-ratio:3/4!important;overflow:hidden!important}
+html body.wpbb-v151 .clothes149-product__media img{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;margin:0!important;object-fit:cover!important;object-position:center!important;opacity:1!important;visibility:visible!important;color:transparent!important;font-size:0!important}
+html body.wpbb-v151 .clothes149-product__body{padding:16px!important}
+html body.wpbb-v151 .clothes149-product h3{font-size:16px!important;line-height:1.2!important}
+html body.wpbb-v151 .clothes149-product p{color:var(--cl151-copy)!important}
+html body.wpbb-v151 .clothes149-product__link{background:var(--cl151-accent)!important;color:#fff!important}
+html body.wpbb-v151 .clothes149-product__link:hover{background:var(--cl151-accent-dark)!important;color:#fff!important}
+
+/* Both newsletter bands use explicit high-contrast colour ownership. */
+html body.wpbb-v151 .clothes149-newsletter{background:var(--cl151-dark)!important;color:#fff!important}
+html body.wpbb-v151 .clothes149-newsletter :is(h1,h2,h3,h4,p,label,span,small,strong,a){color:#fff!important;opacity:1!important}
+html body.wpbb-v151 .clothes149-newsletter .clothes149-eyebrow{color:#f1aabd!important}
+html body.wpbb-v151 .clothes149-newsletter__form :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea){background:#fff!important;color:#1d2637!important;border-color:rgba(255,255,255,.5)!important}
+html body.wpbb-v151 .clothes149-newsletter__form ::placeholder{color:#77757b!important;opacity:1!important}
+html body.wpbb-v151 .clothes149-newsletter__form :is(button,input[type="submit"]){background:#b94461!important;color:#fff!important}
+
+.clothes151-footer-signup{width:100%;padding:42px 0;background:linear-gradient(105deg,#21161a 0%,#51212f 58%,#8f3149 100%);color:#fff}
+.clothes151-footer-signup__grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:54px;align-items:center}
+.clothes151-footer-signup__copy .clothes149-eyebrow{color:#f2b0c0!important}
+.clothes151-footer-signup__copy h2{margin:0 0 8px;color:#fff!important;font-size:clamp(27px,2.4vw,36px);line-height:1.05;letter-spacing:-.035em}
+.clothes151-footer-signup__copy p:not(.clothes149-eyebrow){max-width:520px;margin:0!important;color:rgba(255,255,255,.86)!important;font-size:13px!important;line-height:1.55!important}
+.clothes151-footer-signup__form form{display:grid!important;grid-template-columns:minmax(0,1.3fr) minmax(150px,.7fr) auto!important;gap:9px!important;align-items:end!important;width:100%!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+.clothes151-footer-signup__form form>*{min-width:0!important;margin:0!important}
+.clothes151-footer-signup__form :is(input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]),select,textarea){display:block!important;width:100%!important;height:44px!important;margin:0!important;padding:0 12px!important;border:1px solid rgba(255,255,255,.42)!important;border-radius:7px!important;background:#fff!important;color:#202636!important;box-shadow:none!important}
+.clothes151-footer-signup__form :is(button,input[type="submit"]){display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:96px!important;height:44px!important;margin:0!important;padding:0 14px!important;border:0!important;border-radius:7px!important;background:#bf4764!important;color:#fff!important;font-weight:760!important}
+.clothes151-footer-signup__form :is(p,label,span,small,a){color:#fff!important;opacity:.94!important}
+.clothes151-footer-signup__form :is(.newsletter-consent,.consent,.form-check,label:has(input[type="checkbox"]),p:has(input[type="checkbox"])){grid-column:1/-1!important;font-size:11px!important;line-height:1.35!important}
+
+/* The custom band replaces the parent band's low-contrast legacy gradient. */
+html body.wpbb-v151 .wp-theme-footer-newsletter-band{display:none!important}
+html body.wpbb-v151 .wp-theme-site-footer{background:#fff!important;color:var(--cl151-ink)!important;border-top:1px solid var(--cl151-line)!important}
+html body.wpbb-v151 .wp-theme-site-footer :is(h1,h2,h3,h4,h5,strong){color:var(--cl151-ink)!important}
+html body.wpbb-v151 .wp-theme-site-footer :is(p,span,small,li,address){color:#5d626d!important;opacity:1!important}
+html body.wpbb-v151 .wp-theme-site-footer a{color:#4f4850!important;text-decoration-color:rgba(143,49,73,.25)!important}
+html body.wpbb-v151 .wp-theme-site-footer a:hover{color:var(--cl151-accent)!important}
+html body.wpbb-v151 .wp-theme-site-footer :is(.wp-theme-footer-main,.wp-theme-footer-bottom)>.container,
+html body.wpbb-v151 .wp-theme-site-footer :is(.wp-theme-footer-main,.wp-theme-footer-bottom) .container{box-sizing:border-box!important;width:min(var(--cl151-shell),calc(100% - (var(--cl151-gutter) * 2)))!important;max-width:none!important;margin-inline:auto!important;padding-inline:0!important}
+
+@media(max-width:1199.98px){
+  :root{--cl151-gutter:24px}
+  .clothes151-nav{grid-template-columns:190px minmax(0,1fr) auto;gap:20px}
+  .clothes151-primary-nav{gap:17px}
+  .clothes151-primary-nav>a{font-size:12px}
+  .clothes151-actions>a{padding-inline:10px}
+  html body.wpbb-v151 .clothes149-search,html body.wpbb-v151 .clothes149-popular{width:min(720px,67%)!important}
+}
+
+@media(max-width:1039.98px){
+  .clothes151-utility{display:none}
+  .clothes151-nav{position:relative;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;min-height:70px}
+  .clothes151-menu-toggle{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:42px;height:42px;margin:0;padding:0;border:1px solid var(--cl151-line);border-radius:9px;background:#fff;color:var(--cl151-ink)}
+  .clothes151-menu-toggle>span:not(.screen-reader-text){display:block;width:18px;height:2px;border-radius:2px;background:currentColor;transition:transform .18s ease,opacity .18s ease}
+  body.is-clothes151-menu-open .clothes151-menu-toggle>span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  body.is-clothes151-menu-open .clothes151-menu-toggle>span:nth-child(2){opacity:0}
+  body.is-clothes151-menu-open .clothes151-menu-toggle>span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .clothes151-primary-nav{position:absolute;top:70px;right:0;left:0;z-index:5000;display:flex;flex-direction:column;align-items:stretch;gap:0;height:auto;padding:10px var(--cl151-gutter) 16px;border-top:1px solid var(--cl151-line);border-bottom:1px solid var(--cl151-line);background:#fff;box-shadow:0 18px 34px rgba(35,22,27,.12);visibility:hidden;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility .18s ease}
+  body.is-clothes151-menu-open .clothes151-primary-nav{visibility:visible;opacity:1;transform:none;pointer-events:auto}
+  .clothes151-primary-nav>a{height:48px;border-bottom:1px solid #f0e8e5;font-size:14px}
+  .clothes151-primary-nav>a::after{display:none}
+  .clothes151-actions{grid-column:2;grid-row:1}
+  .clothes151-menu-toggle{grid-column:3;grid-row:1}
+  html body.wpbb-v151 .clothes149-hero{height:650px!important}
+  html body.wpbb-v151 .clothes149-hero__media{width:100%!important;opacity:.46!important}
+  html body.wpbb-v151 .clothes149-hero__slide::after{background:linear-gradient(90deg,#fffdfb 0%,rgba(255,253,251,.96) 52%,rgba(255,253,251,.58) 100%)!important}
+  html body.wpbb-v151 .clothes149-hero__copy{width:min(640px,72%)!important;max-width:640px!important}
+  html body.wpbb-v151 .clothes149-search,html body.wpbb-v151 .clothes149-popular{width:min(720px,78%)!important}
+  html body.wpbb-v151 .clothes149-partners__grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+
+@media(max-width:767.98px){
+  :root{--cl151-gutter:16px}
+  .clothes151-nav{min-height:66px}
+  .clothes151-brand__text strong{font-size:17px}.clothes151-brand__text span{font-size:12px}
+  .clothes151-brand__mark{width:32px;height:32px;flex-basis:32px}
+  .clothes151-actions>a:first-child{display:none}
+  .clothes151-actions>a{min-height:38px;padding:0 10px;font-size:11px}
+  .clothes151-primary-nav{top:66px;padding-inline:16px}
+  html body.wpbb-v151 .clothes149-rail{width:calc(100% - 32px)!important;margin-inline:16px!important}
+  html body.wpbb-v151 .clothes149-section{padding-top:46px!important;padding-bottom:46px!important}
+  html body.wpbb-v151 .clothes149-hero{height:790px!important}
+  html body.wpbb-v151 .clothes149-hero__media{top:auto!important;bottom:0!important;width:100%!important;height:42%!important;opacity:1!important}
+  html body.wpbb-v151 .clothes149-hero__slide::after{background:linear-gradient(180deg,#fffdfb 0%,#fffdfb 52%,rgba(255,253,251,.95) 61%,rgba(255,253,251,.18) 84%,rgba(255,253,251,0) 100%)!important}
+  html body.wpbb-v151 .clothes149-hero__rail{padding-top:40px!important;padding-bottom:365px!important}
+  html body.wpbb-v151 .clothes149-hero__copy{width:100%!important;max-width:560px!important}
+  html body.wpbb-v151 .clothes149-hero__copy :is(h1,h2){font-size:clamp(40px,11vw,50px)!important}
+  html body.wpbb-v151 .clothes149-hero__tools{left:16px!important;right:16px!important;bottom:300px!important;width:auto!important;transform:none!important}
+  html body.wpbb-v151 .clothes149-search{grid-template-columns:1fr!important;width:100%!important;max-width:none!important;gap:6px!important;padding:7px!important}
+  html body.wpbb-v151 .clothes149-search :is(input[type="search"],select){height:42px!important;border:1px solid var(--cl151-line)!important;border-radius:7px!important}
+  html body.wpbb-v151 .clothes149-search button{height:42px!important}
+  html body.wpbb-v151 .clothes149-popular{width:100%!important;max-width:none!important}
+  html body.wpbb-v151 .clothes149-hero__pager{bottom:14px!important}
+  html body.wpbb-v151 .clothes149-partners__grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  html body.wpbb-v151 .clothes149-partner{justify-content:flex-start!important;padding-inline:10px!important}
+  html body.wpbb-v151 .clothes149-media-text{gap:28px!important}
+  .clothes151-footer-signup__grid{grid-template-columns:1fr;gap:24px}
+  .clothes151-footer-signup__form form{grid-template-columns:1fr!important}
+  .clothes151-footer-signup__form :is(.newsletter-consent,.consent,.form-check,label:has(input[type="checkbox"]),p:has(input[type="checkbox"])){grid-column:auto!important}
+}
+
+@media(max-width:479.98px){
+  .clothes151-brand__text span{display:none}
+  html body.wpbb-v151 .clothes149-partners__grid{grid-template-columns:1fr!important}
+}
+
+/* Keep process numbering inside the card instead of floating between cards. */
+html body.wpbb-v151 .clothes149-process__card{padding-top:24px!important;min-height:188px!important}
+html body.wpbb-v151 .clothes149-process__badge{position:static!important;display:grid!important;place-items:center!important;width:34px!important;height:34px!important;margin:0 0 16px!important;border-radius:9px!important;background:var(--cl151-accent-soft)!important;color:var(--cl151-accent)!important;font-size:10px!important;font-weight:850!important;letter-spacing:.06em!important}
+html body.wpbb-v151 .clothes149-process__card h3{color:var(--cl151-ink)!important}
+html body.wpbb-v151 .clothes149-process__card p{color:var(--cl151-copy)!important}

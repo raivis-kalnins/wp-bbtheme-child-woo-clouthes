@@ -945,10 +945,13 @@ if ( ! function_exists( 'wpbb_clothes_render_native_products_v64' ) ) {
 
 if ( ! function_exists( 'wpbb_clothes_shop_page_v64' ) ) {
     function wpbb_clothes_shop_page_v64() {
+        $is_tax = function_exists( 'is_product_taxonomy' ) && is_product_taxonomy();
+        $title = $is_tax ? single_term_title( '', false ) : __( 'Shop the collection.', 'wp-bbtheme-child-woo-clouthes' );
+        $eyebrow = $is_tax ? __( 'Collection', 'wp-bbtheme-child-woo-clouthes' ) : __( 'Shop', 'wp-bbtheme-child-woo-clouthes' );
         ob_start(); ?>
         <main id="wp-theme-main" class="wp-theme-main wp-theme-woo-legacy wp-theme-woo-legacy--catalog wp-theme-woo-archive">
-          <section class="wp-theme-woo-legacy__hero"><div class="container"><p class="wp-theme-sector-eyebrow"><?php echo esc_html( __( 'Shop', 'wp-bbtheme-child-woo-clouthes' ) ); ?></p><h1><?php echo esc_html( __( 'Shop the collection.', 'wp-bbtheme-child-woo-clouthes' ) ); ?></h1><p><?php echo esc_html( __( 'Browse everyday pieces, compare fit and move to checkout without losing context.', 'wp-bbtheme-child-woo-clouthes' ) ); ?></p></div></section>
-          <div class="container wp-theme-woo-legacy__body"><div class="woocommerce wp-theme-store-grid"><?php echo wpbb_clothes_render_native_products_v64(); ?></div></div>
+          <section class="wp-theme-woo-legacy__hero"><div class="container"><p class="wp-theme-sector-eyebrow"><?php echo esc_html( $eyebrow ); ?></p><h1><?php echo esc_html( $title ); ?></h1><?php if ( $is_tax && term_description() ) : ?><div class="wp-theme-woo-legacy__intro"><?php echo wp_kses_post( term_description() ); ?></div><?php else : ?><p><?php echo esc_html( __( 'Browse everyday pieces, compare fit and move to checkout without losing context.', 'wp-bbtheme-child-woo-clouthes' ) ); ?></p><?php endif; ?></div></section>
+          <div class="container wp-theme-woo-legacy__body"><div class="woocommerce wp-theme-store-grid wpbb-woo-surface wpbb-woo-catalog-surface"><?php echo wpbb_clothes_render_native_products_v64(); ?></div></div>
         </main>
         <?php return ob_get_clean();
     }
@@ -974,7 +977,7 @@ if ( ! function_exists( 'wpbb_clothes_single_product_v64' ) ) {
 if ( ! function_exists( 'wpbb_clothes_cart_page_v64' ) ) {
     function wpbb_clothes_cart_page_v64() {
         if ( ! function_exists( 'WC' ) ) return ''; ob_start(); ?>
-        <main id="wp-theme-main" class="wp-theme-main wp-theme-woo-legacy wp-theme-woo-legacy--cart"><section class="wp-theme-woo-legacy__hero"><div class="container"><p class="wp-theme-sector-eyebrow"><?php echo esc_html( __( 'Basket', 'wp-bbtheme-child-woo-clouthes' ) ); ?></p><h1><?php echo esc_html( __( 'Review your basket.', 'wp-bbtheme-child-woo-clouthes' ) ); ?></h1><p><?php echo esc_html( __( 'Check sizes, quantities and totals before moving to checkout.', 'wp-bbtheme-child-woo-clouthes' ) ); ?></p></div></section><div class="container wp-theme-woo-legacy__body"><div class="woocommerce wp-theme-woo-cart-shell"><?php echo do_shortcode('[woocommerce_cart]'); ?></div></div></main>
+        <main id="wp-theme-main" class="wp-theme-main wp-theme-woo-legacy wp-theme-woo-legacy--cart"><section class="wp-theme-woo-legacy__hero"><div class="container"><p class="wp-theme-sector-eyebrow"><?php echo esc_html( __( 'Basket', 'wp-bbtheme-child-woo-clouthes' ) ); ?></p><h1><?php echo esc_html( __( 'Review your basket.', 'wp-bbtheme-child-woo-clouthes' ) ); ?></h1><p><?php echo esc_html( __( 'Check sizes, quantities and totals before moving to checkout.', 'wp-bbtheme-child-woo-clouthes' ) ); ?></p></div></section><div class="container wp-theme-woo-legacy__body"><div class="woocommerce wp-theme-woo-cart-shell wpbb-woo-surface wpbb-woo-cart-surface"><?php echo do_shortcode('[woocommerce_cart]'); ?></div></div></main>
         <?php return ob_get_clean();
     }
     add_shortcode( 'wpbb_clothes_cart_page', 'wpbb_clothes_cart_page_v64' );
@@ -983,7 +986,7 @@ if ( ! function_exists( 'wpbb_clothes_cart_page_v64' ) ) {
 if ( ! function_exists( 'wpbb_clothes_checkout_page_v64' ) ) {
     function wpbb_clothes_checkout_page_v64() {
         if ( ! function_exists( 'WC' ) ) return ''; $received = function_exists('is_wc_endpoint_url') && is_wc_endpoint_url('order-received'); ob_start(); ?>
-        <main id="wp-theme-main" class="wp-theme-main wp-theme-woo-legacy wp-theme-woo-legacy--checkout<?php echo $received ? ' wp-theme-woo-legacy--order-received' : ''; ?>"><section class="wp-theme-woo-legacy__hero"><div class="container"><p class="wp-theme-sector-eyebrow"><?php echo esc_html($received ? __('Order','wp-bbtheme-child-woo-clouthes') : __('Checkout','wp-bbtheme-child-woo-clouthes')); ?></p><h1><?php echo esc_html($received ? __('Order details.','wp-bbtheme-child-woo-clouthes') : __('Complete your order.','wp-bbtheme-child-woo-clouthes')); ?></h1><?php if(!$received): ?><p><?php echo esc_html( __( 'Billing, delivery and payment information in one clear flow.', 'wp-bbtheme-child-woo-clouthes' ) ); ?></p><?php endif; ?></div></section><div class="container wp-theme-woo-legacy__body"><div class="woocommerce"><?php echo do_shortcode('[woocommerce_checkout]'); ?></div></div></main>
+        <main id="wp-theme-main" class="wp-theme-main wp-theme-woo-legacy wp-theme-woo-legacy--checkout<?php echo $received ? ' wp-theme-woo-legacy--order-received' : ''; ?>"><section class="wp-theme-woo-legacy__hero"><div class="container"><p class="wp-theme-sector-eyebrow"><?php echo esc_html($received ? __('Order','wp-bbtheme-child-woo-clouthes') : __('Checkout','wp-bbtheme-child-woo-clouthes')); ?></p><h1><?php echo esc_html($received ? __('Order details.','wp-bbtheme-child-woo-clouthes') : __('Complete your order.','wp-bbtheme-child-woo-clouthes')); ?></h1><?php if(!$received): ?><p><?php echo esc_html( __( 'Billing, delivery and payment information in one clear flow.', 'wp-bbtheme-child-woo-clouthes' ) ); ?></p><?php endif; ?></div></section><div class="container wp-theme-woo-legacy__body"><div class="woocommerce wpbb-woo-surface wpbb-woo-checkout-surface"><?php echo do_shortcode('[woocommerce_checkout]'); ?></div></div></main>
         <?php return ob_get_clean();
     }
     add_shortcode( 'wpbb_clothes_checkout_page', 'wpbb_clothes_checkout_page_v64' );
@@ -992,7 +995,7 @@ if ( ! function_exists( 'wpbb_clothes_checkout_page_v64' ) ) {
 if ( ! function_exists( 'wpbb_clothes_account_page_v64' ) ) {
     function wpbb_clothes_account_page_v64() {
         if ( ! function_exists( 'WC' ) ) return ''; ob_start(); ?>
-        <main id="wp-theme-main" class="wp-theme-main wp-theme-woo-legacy wp-theme-woo-legacy--account"><section class="wp-theme-woo-legacy__hero"><div class="container"><p class="wp-theme-sector-eyebrow"><?php esc_html_e('Account','wp-bbtheme-child-woo-clouthes'); ?></p><h1><?php esc_html_e('Your account.','wp-bbtheme-child-woo-clouthes'); ?></h1></div></section><div class="container wp-theme-woo-legacy__body"><div class="woocommerce"><?php echo do_shortcode('[woocommerce_my_account]'); ?></div></div></main>
+        <main id="wp-theme-main" class="wp-theme-main wp-theme-woo-legacy wp-theme-woo-legacy--account"><section class="wp-theme-woo-legacy__hero"><div class="container"><p class="wp-theme-sector-eyebrow"><?php esc_html_e('Account','wp-bbtheme-child-woo-clouthes'); ?></p><h1><?php esc_html_e('Your account.','wp-bbtheme-child-woo-clouthes'); ?></h1></div></section><div class="container wp-theme-woo-legacy__body"><div class="woocommerce wpbb-woo-surface wpbb-woo-account-surface"><?php echo do_shortcode('[woocommerce_my_account]'); ?></div></div></main>
         <?php return ob_get_clean();
     }
     add_shortcode( 'wpbb_clothes_account_page', 'wpbb_clothes_account_page_v64' );
@@ -1101,3 +1104,93 @@ require_once get_stylesheet_directory() . '/inc/v105-finish.php';
 
 // v3.8.11.07 final search, WooCommerce, Jobs captcha/grid and responsive repair.
 require_once get_stylesheet_directory() . '/inc/v107-finish.php';
+
+// v3.8.11.08 WooCommerce layout/polish and packaging finish.
+require_once get_stylesheet_directory() . '/inc/v108-finish.php';
+
+// v3.8.11.09 WooCommerce, media and account finalisation.
+require_once get_stylesheet_directory() . '/inc/v109-finish.php';
+
+// v3.8.11.10 media, WooCommerce, managed-page and route-facing finish.
+require_once get_stylesheet_directory() . '/inc/v110-finish.php';
+
+// v3.8.11.11 hero finder, editorial grid, mega-menu and image-quality finish.
+require_once get_stylesheet_directory() . '/inc/v111-finish.php';
+
+// v3.8.11.12 editorial grid, hero clarity and media recovery.
+require_once get_stylesheet_directory() . '/inc/v112-finish.php';
+
+// v3.8.11.13 final hero edge/clarity and editorial-grid alignment.
+require_once get_stylesheet_directory() . '/inc/v113-finish.php';
+
+// v3.8.11.14 child-only settings, editor, legal, editorial and hero finish.
+require_once get_stylesheet_directory() . '/inc/v114-finish.php';
+
+// v3.8.11.15 final mega-menu, hero/media, quote and BBuilder repair.
+require_once get_stylesheet_directory() . '/inc/v115-finish.php';
+
+// v3.8.11.16 reset-safe layout/media, mega-menu, consent and BBuilder finish.
+require_once get_stylesheet_directory() . '/inc/v116-finish.php';
+
+// v3.8.11.17 exact mega-menu placement, reset-safe BBuilder grid and immediate media recovery.
+require_once get_stylesheet_directory() . '/inc/v117-finish.php';
+
+
+// v3.8.11.18 reset-safe gutters, direct hero assets, nav-trigger mega positioning and cache finish.
+require_once get_stylesheet_directory() . '/inc/v118-finish.php';
+
+// v3.8.11.19 live regression repair: closer mega menus, canonical gutters/grids and no-flash consent.
+require_once get_stylesheet_directory() . '/inc/v119-finish.php';
+
+// v3.8.11.20 stable v119 rollback, restored gutters/grids and deterministic hero pagination/quality repair.
+require_once get_stylesheet_directory() . '/inc/v120-finish.php';
+
+// v3.8.11.21 scoped BBuilder grid recovery; retire v119/v120 global geometry while preserving hero quality/pagination.
+require_once get_stylesheet_directory() . '/inc/v121-finish.php';
+
+// v3.8.11.22 component-only grid-gap finish; keep v121 alignment and restore stable card/media/stat spacing.
+require_once get_stylesheet_directory() . '/inc/v122-finish.php';
+
+// v3.8.11.23 remaining basic grids/gaps + authoritative hero source/pagination finish.
+require_once get_stylesheet_directory() . '/inc/v123-finish.php';
+
+// v3.8.11.24 final basic visual hardening: deterministic card gaps, full-width fun-facts and one compact hero pager.
+require_once get_stylesheet_directory() . '/inc/v124-finish.php';
+
+// v3.8.11.25 final scoped grid, hero clarity and WooCommerce shop/cart/account finish.
+require_once get_stylesheet_directory() . '/inc/v125-final.php';
+
+// v3.8.11.26 final cross-theme component grids, hero image/pagination and process-card recovery.
+require_once get_stylesheet_directory() . '/inc/v126-final.php';
+
+// v3.8.11.27 final live-regression hardening: robust card grids, process-card shape, hero pagination and Business/Building hero fade.
+require_once get_stylesheet_directory() . '/inc/v127-final.php';
+
+// v3.8.11.28 final live component recovery: commerce grids, cart/checkout, process cards and stable hero media/pagination.
+require_once get_stylesheet_directory() . '/inc/v128-final.php';
+
+// v3.8.11.34 final cross-theme hero, grid, process and WooCommerce ownership layer.
+require_once get_stylesheet_directory() . '/inc/v134-final.php';
+
+
+// v3.8.11.35 final duplicate/process/hero cleanup.
+require_once get_stylesheet_directory() . '/inc/v135-final.php';
+
+// v3.8.11.36 full-width hero, stable process and cross-theme grid ownership.
+require_once get_stylesheet_directory() . '/inc/v136-final.php';
+
+
+// v3.8.11.40 clean Clothes ownership: one stable frontend layer + native WooCommerce shells.
+require_once get_stylesheet_directory() . '/inc/v140-clouthes-clean.php';
+
+// v3.8.11.49 deterministic homepage template owner; v140 remains WooCommerce/template owner off the homepage.
+require_once get_stylesheet_directory() . '/inc/v149-clouthes-deterministic-home.php';
+
+// v3.8.11.50 Tech Shop parity finish for the deterministic Clothes homepage.
+require_once get_stylesheet_directory() . '/inc/v150-clouthes-tech-parity.php';
+
+// v3.8.11.51 fixed Tech Shop source-of-truth header/hero/media/colour finish.
+require_once get_stylesheet_directory() . '/inc/v151-clouthes-tech-source.php';
+
+// v3.8.11.52 restore editable parent mega-menu and finish newsletter consent/contrast.
+require_once get_stylesheet_directory() . '/inc/v152-clouthes-mega-consent.php';

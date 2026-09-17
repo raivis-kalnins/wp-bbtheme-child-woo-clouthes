@@ -1,2 +1,28 @@
-<?php defined( 'ABSPATH' ) || exit; get_header(); $title=__( 'Your account.', 'wp-theme' ); $eyebrow=__( 'Account', 'wp-theme' ); if(function_exists('is_wc_endpoint_url')){if(is_wc_endpoint_url('orders'))$title=__( 'Your orders.', 'wp-theme' );elseif(is_wc_endpoint_url('downloads'))$title=__( 'Your downloads.', 'wp-theme' );elseif(is_wc_endpoint_url('edit-address'))$title=__( 'Your addresses.', 'wp-theme' );elseif(is_wc_endpoint_url('edit-account'))$title=__( 'Account details.', 'wp-theme' );elseif(is_wc_endpoint_url('lost-password'))$title=__( 'Reset your password.', 'wp-theme' );} ?>
-<main id="wp-theme-main" class="wp-theme-main wp-theme-woo-legacy wp-theme-woo-legacy--account"><section class="wp-theme-woo-legacy__hero"><div class="container"><p class="wp-theme-sector-eyebrow"><?php echo esc_html($eyebrow);?></p><h1><?php echo esc_html($title);?></h1><p><?php esc_html_e('Manage orders, addresses, downloads and account details.','wp-theme');?></p></div></section><div class="container wp-theme-woo-legacy__body"><?php if(class_exists('WC_Shortcode_My_Account')){WC_Shortcode_My_Account::output(array());}else{echo do_shortcode('[woocommerce_my_account]');}?></div></main><?php get_footer(); ?>
+<?php
+defined( 'ABSPATH' ) || exit;
+get_header();
+$title = __( 'Your account.', 'wp-bbtheme-child-woo-clouthes' );
+if ( function_exists( 'is_wc_endpoint_url' ) ) {
+    if ( is_wc_endpoint_url( 'orders' ) ) $title = __( 'Your orders.', 'wp-bbtheme-child-woo-clouthes' );
+    elseif ( is_wc_endpoint_url( 'downloads' ) ) $title = __( 'Your downloads.', 'wp-bbtheme-child-woo-clouthes' );
+    elseif ( is_wc_endpoint_url( 'edit-address' ) ) $title = __( 'Your addresses.', 'wp-bbtheme-child-woo-clouthes' );
+    elseif ( is_wc_endpoint_url( 'edit-account' ) ) $title = __( 'Account details.', 'wp-bbtheme-child-woo-clouthes' );
+    elseif ( is_wc_endpoint_url( 'payment-methods' ) ) $title = __( 'Payment methods.', 'wp-bbtheme-child-woo-clouthes' );
+    elseif ( is_wc_endpoint_url( 'lost-password' ) ) $title = __( 'Reset your password.', 'wp-bbtheme-child-woo-clouthes' );
+}
+?>
+<main id="wp-theme-main" class="wp-theme-main wp-theme-woo-legacy wp-theme-woo-legacy--account">
+  <section class="wp-theme-woo-legacy__hero">
+    <div class="container">
+      <p class="wp-theme-sector-eyebrow"><?php esc_html_e( 'Account', 'wp-bbtheme-child-woo-clouthes' ); ?></p>
+      <h1><?php echo esc_html( $title ); ?></h1>
+      <p><?php esc_html_e( 'Manage orders, addresses, downloads and account details.', 'wp-bbtheme-child-woo-clouthes' ); ?></p>
+    </div>
+  </section>
+  <div class="container wp-theme-woo-legacy__body">
+    <div class="woocommerce wpbb-woo-surface wpbb-woo-account-surface">
+      <?php echo do_shortcode( '[woocommerce_my_account]' ); ?>
+    </div>
+  </div>
+</main>
+<?php get_footer(); ?>

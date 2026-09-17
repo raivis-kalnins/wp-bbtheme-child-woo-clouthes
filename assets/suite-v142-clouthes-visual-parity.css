@@ -1,0 +1,402 @@
+/* Woo Clothes 3.8.11.42 - screenshot-led visual parity hard-fix. */
+:root{
+  --wpbb-v142-shell:1320px;
+  --wpbb-v142-pad:24px;
+  --wpbb-v142-left:max(var(--wpbb-v142-pad),calc((100vw - var(--wpbb-v142-shell))/2));
+  --wpbb-v142-right:max(var(--wpbb-v142-pad),calc((100vw - var(--wpbb-v142-shell))/2));
+  --wpbb-v142-ink:#241b1d;
+  --wpbb-v142-copy:#6f6265;
+  --wpbb-v142-line:#ded5d0;
+  --wpbb-v142-soft:#f7f1ec;
+  --wpbb-v142-soft-2:#fbf8f5;
+  --wpbb-v142-accent:#772f3a;
+  --wpbb-v142-accent-hover:#5f2530;
+  --wpbb-v142-dark:#1d1618;
+  --wpbb-v142-shadow:0 12px 32px rgba(55,31,36,.07);
+  /* v141 CSS still reads these, but no JS is allowed to rewrite them. */
+  --wpbb-v141-left:var(--wpbb-v142-left);
+  --wpbb-v141-right:var(--wpbb-v142-right);
+}
+
+html body.wpbb-v142{
+  --sector-primary:var(--wpbb-v142-accent);
+  --sector-v82-accent:var(--wpbb-v142-accent);
+  --sector-v82-accent-hover:var(--wpbb-v142-accent-hover);
+  --sector-v82-soft:var(--wpbb-v142-soft);
+  --sector-v82-ink:var(--wpbb-v142-ink);
+  --sector-v82-shell:var(--wpbb-v142-shell);
+  --sector-v83-accent:var(--wpbb-v142-accent);
+  --sector-v83-soft:var(--wpbb-v142-soft);
+  --sector-v83-ink:var(--wpbb-v142-ink);
+  --sector-v83-copy:var(--wpbb-v142-copy);
+  --sector-v83-line:var(--wpbb-v142-line);
+  --sector-v83-shell:var(--wpbb-v142-shell);
+  --sector-v97-accent:var(--wpbb-v142-accent);
+  --sector-v97-soft:var(--wpbb-v142-soft);
+  --sector-v97-ink:var(--wpbb-v142-ink);
+  --sector-v97-copy:var(--wpbb-v142-copy);
+  --sector-v97-line:var(--wpbb-v142-line);
+  --sector-v97-shell:var(--wpbb-v142-shell);
+  --sector-v97-pad:var(--wpbb-v142-pad);
+  --wp-theme-primary:var(--wpbb-v142-accent);
+  --tfa-brand-color:var(--wpbb-v142-accent);
+  --iws-primary:var(--wpbb-v142-accent);
+  --iws-accent:var(--wpbb-v142-accent);
+  color:var(--wpbb-v142-copy);
+}
+html body.wpbb-v142 h1,
+html body.wpbb-v142 h2,
+html body.wpbb-v142 h3,
+html body.wpbb-v142 h4,
+html body.wpbb-v142 h5,
+html body.wpbb-v142 h6{color:var(--wpbb-v142-ink)}
+
+/* --------------------------------------------------------------------------
+ * Header, utility bar, desktop menu and action buttons
+ * -------------------------------------------------------------------------- */
+html body.wpbb-v142 .wp-theme-utility-bar{
+  background:var(--wpbb-v142-dark)!important;
+  color:#f8f2ef!important;
+  border:0!important;
+}
+html body.wpbb-v142 .wp-theme-utility-bar :is(a,span,.wp-theme-top-navigation,.wp-theme-top-menu){color:#f8f2ef!important;opacity:1!important}
+html body.wpbb-v142 .wp-theme-utility-bar a:hover{color:#fff!important}
+html body.wpbb-v142 .wp-theme-header-main{
+  background:rgba(255,253,249,.985)!important;
+  border-bottom:1px solid var(--wpbb-v142-line)!important;
+  backdrop-filter:blur(14px);
+}
+html body.wpbb-v142 :is(.wp-theme-utility-bar,.wp-theme-header-main,.wp-theme-header-search-panel)>.container,
+html body.wpbb-v142 .wp-theme-site-footer :is(.wp-theme-footer-main,.wp-theme-footer-bottom,.wp-theme-footer-newsletter-band)>.container,
+html body.wpbb-v142 .wp-theme-footer-newsletter-band>.container{
+  box-sizing:border-box!important;
+  width:min(calc(100% - (var(--wpbb-v142-pad) * 2)),var(--wpbb-v142-shell))!important;
+  max-width:var(--wpbb-v142-shell)!important;
+  margin-inline:auto!important;
+}
+html body.wpbb-v142 .wp-theme-header-main__inner{min-height:78px!important;column-gap:28px!important}
+
+@media(min-width:1200px){
+  html body.wpbb-v142 .wp-theme-primary-navigation{
+    position:static!important;inset:auto!important;display:block!important;width:auto!important;max-width:none!important;
+    padding:0!important;overflow:visible!important;background:transparent!important;border:0!important;box-shadow:none!important;
+    transform:none!important;visibility:visible!important;opacity:1!important;
+  }
+  html body.wpbb-v142 .wp-theme-primary-menu{
+    display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;
+    justify-content:flex-start!important;gap:24px!important;width:auto!important;margin:0!important;padding:0!important;
+  }
+  html body.wpbb-v142 .wp-theme-primary-menu>li{
+    display:flex!important;grid-template-columns:none!important;align-items:center!important;width:auto!important;
+    border:0!important;margin:0!important;padding:0!important;
+  }
+  html body.wpbb-v142 .wp-theme-primary-menu>li>a{
+    position:relative!important;display:flex!important;align-items:center!important;min-height:78px!important;
+    padding:0!important;color:var(--wpbb-v142-ink)!important;font-size:14px!important;font-weight:750!important;
+    text-decoration:none!important;white-space:nowrap!important;
+  }
+  html body.wpbb-v142 .wp-theme-primary-menu>li>a::before{
+    content:"";position:absolute;left:0;right:0;bottom:17px;height:2px;border-radius:999px;
+    background:var(--wpbb-v142-accent);transform:scaleX(0);transform-origin:center;transition:transform .16s ease;
+  }
+  html body.wpbb-v142 .wp-theme-primary-menu>li>a:hover::before,
+  html body.wpbb-v142 .wp-theme-primary-menu>.current-menu-item>a::before,
+  html body.wpbb-v142 .wp-theme-primary-menu>.current-menu-ancestor>a::before{transform:scaleX(1)}
+  html body.wpbb-v142 .wp-theme-primary-menu>li>a:hover,
+  html body.wpbb-v142 .wp-theme-primary-menu>.current-menu-item>a,
+  html body.wpbb-v142 .wp-theme-primary-menu>.current-menu-ancestor>a{color:var(--wpbb-v142-accent)!important}
+  html body.wpbb-v142 .wp-theme-menu-toggle{display:none!important;visibility:hidden!important;pointer-events:none!important}
+
+  /* The screenshot showed a row of tiny icon boxes. Restore real desktop actions. */
+  html body.wpbb-v142 .wp-theme-header-actions{gap:8px!important}
+  html body.wpbb-v142 .wp-theme-header-action{
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    width:auto!important;min-width:42px!important;height:42px!important;min-height:42px!important;
+    padding:0 11px!important;gap:7px!important;border:1px solid var(--wpbb-v142-line)!important;
+    border-radius:10px!important;background:#fffdf9!important;color:var(--wpbb-v142-ink)!important;
+  }
+  html body.wpbb-v142 .wp-theme-header-actions .wp-theme-action-label{
+    position:static!important;width:auto!important;height:auto!important;margin:0!important;padding:0!important;
+    overflow:visible!important;clip:auto!important;clip-path:none!important;white-space:nowrap!important;border:0!important;
+    font-size:11px!important;font-weight:800!important;line-height:1!important;
+  }
+  html body.wpbb-v142 .wp-theme-language-switcher__toggle{height:42px!important;min-height:42px!important;border-radius:10px!important}
+}
+
+/* v97 treats 992-1199 as mobile, while v141 hid its menu button there. Fix that gap. */
+@media(max-width:1199.98px){
+  html body.wpbb-v142 .wp-theme-menu-toggle{display:inline-grid!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+  html body.wpbb-v142 .wp-theme-primary-navigation{top:var(--sector-mobile-nav-top,76px)!important}
+  html body.wpbb-v142 .wp-theme-primary-menu{display:block!important;width:100%!important;margin:0!important;padding:0!important}
+  html body.wpbb-v142 .wp-theme-primary-menu>li{display:grid!important;grid-template-columns:minmax(0,1fr) 46px!important;width:100%!important}
+  html body.wpbb-v142 .wp-theme-primary-menu>li>a{min-height:54px!important;padding:0 6px!important;color:var(--wpbb-v142-ink)!important}
+  html body.wpbb-v142 .wp-theme-header-actions .wp-theme-action-label{
+    position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;
+    overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * Homepage axis: fixed Clothes width, never measured from a broken element
+ * -------------------------------------------------------------------------- */
+html body.wpbb-v142-home #wp-theme-main{width:100%!important;max-width:none!important;margin:0!important;overflow:clip!important}
+html body.wpbb-v142-home #wp-theme-main :is(
+  .wp-theme-section-shell,
+  .wpbb-v67-section-shell,
+  .wp-theme-home-stats,
+  .wpbb-sector-proof-band,
+  .wp-theme-insights-section,
+  .wp-theme-blog-preview-section
+):not(.wp-theme-sector-hero):not(.wp-theme-hero):not(.container){
+  box-sizing:border-box!important;width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;
+  padding-left:var(--wpbb-v142-left)!important;padding-right:var(--wpbb-v142-right)!important;
+}
+html body.wpbb-v142-home #wp-theme-main :is(
+  .wp-theme-section-shell,
+  .wpbb-v67-section-shell,
+  .wp-theme-home-stats,
+  .wpbb-sector-proof-band,
+  .wp-theme-insights-section,
+  .wp-theme-blog-preview-section
+):not(.wp-theme-sector-hero):not(.wp-theme-hero)>:is(.container,.container-fluid,.wpbb-v67-section-inner,.wp-block-group__inner-container,.wp-theme-blog-preview-container){
+  box-sizing:border-box!important;width:100%!important;max-width:none!important;margin:0!important;padding-left:0!important;padding-right:0!important;
+}
+
+/* Critical: some imported BBuilder rows are the container AND the section shell.
+ * They must be centred containers, not full-bleed shells with giant side padding. */
+html body.wpbb-v142-home #wp-theme-main :is(.wp-theme-section-shell,.wpbb-v67-section-shell).container{
+  box-sizing:border-box!important;
+  width:min(calc(100% - (var(--wpbb-v142-pad) * 2)),var(--wpbb-v142-shell))!important;
+  max-width:var(--wpbb-v142-shell)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:0!important;padding-right:0!important;
+}
+html body.wpbb-v142-home #wp-theme-main :is(.wp-theme-section-shell,.wpbb-v67-section-shell) .container{
+  max-width:none!important;
+}
+
+/* Hero copy uses the same 1320 edge. */
+html body.wpbb-v142-home #wp-theme-main :is(.wpbb-v140-primary-hero,.wpbb-v140-secondary-hero) .wpbb-swiper-slide__content{
+  box-sizing:border-box!important;
+  width:min(calc(100% - (var(--wpbb-v142-pad) * 2)),var(--wpbb-v142-shell))!important;
+  max-width:var(--wpbb-v142-shell)!important;
+  margin-left:auto!important;margin-right:auto!important;
+}
+
+/* --------------------------------------------------------------------------
+ * Hero pager: deliberately larger than the tiny v141 dots from the screenshot
+ * -------------------------------------------------------------------------- */
+html body.wpbb-v142-home #wp-theme-main .wpbb-swiper--hero,
+html body.wpbb-v142-home #wp-theme-main .wpbb-swiper--hero .swiper{position:relative!important;overflow:hidden!important}
+html body.wpbb-v142-home #wp-theme-main .wpbb-swiper--hero :is(
+  .swiper-pagination,
+  .wpbb-v141-hero-pagination,
+  .wpbb-v138-hero-pagination,
+  .wpbb-v120-pagination,
+  .wpbb-v121-pagination,
+  .wpbb-v123-hero-pagination,
+  .wpbb-v124-hero-pagination,
+  .wpbb-v126-hero-pagination,
+  .wpbb-v127-hero-pagination,
+  .wpbb-v128-hero-pagination,
+  .wpbb-v133-hero-pagination,
+  .wpbb-v134-hero-pagination,
+  .wpbb-v135-hero-pagination
+){display:none!important}
+html body.wpbb-v142-home #wp-theme-main .wpbb-swiper--hero .wpbb-v142-hero-pagination{
+  box-sizing:border-box!important;position:absolute!important;left:50%!important;bottom:18px!important;z-index:55!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;gap:5px!important;
+  width:max-content!important;max-width:calc(100% - 32px)!important;margin:0!important;padding:5px!important;
+  border:1px solid rgba(119,47,58,.18)!important;border-radius:12px!important;background:rgba(255,253,249,.96)!important;
+  box-shadow:0 9px 28px rgba(36,27,29,.16)!important;transform:translateX(-50%)!important;
+  visibility:visible!important;opacity:1!important;pointer-events:auto!important;backdrop-filter:blur(8px)!important;
+}
+html body.wpbb-v142-home #wp-theme-main .wpbb-swiper--hero .wpbb-v142-hero-pagination__button{
+  appearance:none!important;-webkit-appearance:none!important;display:grid!important;place-items:center!important;
+  width:36px!important;height:30px!important;min-width:36px!important;min-height:30px!important;margin:0!important;padding:0!important;
+  border:0!important;border-radius:8px!important;background:transparent!important;color:#75686b!important;
+  font:800 11px/1 Inter,system-ui,sans-serif!important;letter-spacing:.04em!important;box-shadow:none!important;cursor:pointer!important;
+  transition:background .16s ease,color .16s ease,transform .16s ease!important;
+}
+html body.wpbb-v142-home #wp-theme-main .wpbb-swiper--hero .wpbb-v142-hero-pagination__button:is(.is-active,[aria-current="true"]){
+  background:var(--wpbb-v142-accent)!important;color:#fff!important;
+}
+html body.wpbb-v142-home #wp-theme-main .wpbb-swiper--hero .wpbb-v142-hero-pagination__button:hover{background:var(--wpbb-v142-soft)!important;color:var(--wpbb-v142-accent)!important}
+html body.wpbb-v142-home #wp-theme-main .wpbb-swiper--hero .wpbb-v142-hero-pagination__button:is(.is-active,[aria-current="true"]):hover{background:var(--wpbb-v142-accent-hover)!important;color:#fff!important}
+html body.wpbb-v142-home #wp-theme-main .wpbb-swiper--hero .wpbb-v142-hero-pagination__button:focus-visible{outline:3px solid color-mix(in srgb,var(--wpbb-v142-accent) 28%,transparent)!important;outline-offset:2px!important}
+
+/* --------------------------------------------------------------------------
+ * Values row / #wpbb-row-35: explicit three-column contained grid
+ * -------------------------------------------------------------------------- */
+html body.wpbb-v142-home #wp-theme-main .clothes-values,
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-values-grid{
+  --bs-gutter-x:0!important;--bs-gutter-y:0!important;
+  box-sizing:border-box!important;display:grid!important;grid-template-columns:1fr!important;
+  gap:24px!important;align-items:stretch!important;
+  width:min(calc(100% - (var(--wpbb-v142-pad) * 2)),var(--wpbb-v142-shell))!important;
+  max-width:var(--wpbb-v142-shell)!important;margin-left:auto!important;margin-right:auto!important;
+  padding-left:0!important;padding-right:0!important;
+}
+html body.wpbb-v142-home #wp-theme-main .clothes-values>.wpbb-column,
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-values-grid>.wpbb-v142-grid-cell{
+  box-sizing:border-box!important;display:flex!important;float:none!important;flex:none!important;
+  width:100%!important;max-width:none!important;min-width:0!important;margin:0!important;padding:0!important;
+}
+html body.wpbb-v142-home #wp-theme-main .clothes-values>.wpbb-column>.wp-theme-sector-card,
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-values-grid>.wpbb-v142-grid-cell .wp-theme-sector-card{
+  width:100%!important;height:100%!important;min-height:178px!important;margin:0!important;padding:24px!important;
+  border:1px solid var(--wpbb-v142-line)!important;border-radius:16px!important;background:#fff!important;box-shadow:var(--wpbb-v142-shadow)!important;
+}
+
+/* --------------------------------------------------------------------------
+ * Robust grid owner for all other card-led homepage sections
+ * -------------------------------------------------------------------------- */
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-grid{
+  --bs-gutter-x:0!important;--bs-gutter-y:0!important;
+  box-sizing:border-box!important;display:grid!important;grid-template-columns:1fr!important;gap:20px!important;
+  width:100%!important;max-width:none!important;min-width:0!important;margin:0!important;padding:0!important;
+  align-items:stretch!important;list-style:none!important;
+}
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-grid>.wpbb-v142-grid-cell{
+  box-sizing:border-box!important;display:flex!important;float:none!important;flex:none!important;
+  width:100%!important;max-width:none!important;min-width:0!important;margin:0!important;padding:0!important;align-items:stretch!important;
+}
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-card{
+  box-sizing:border-box!important;width:100%!important;max-width:none!important;min-width:0!important;height:100%!important;margin:0!important;
+}
+@media(min-width:680px){
+  html body.wpbb-v142-home #wp-theme-main .clothes-values,
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-values-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-grid.wpbb-v142-cols-2,
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-grid.wpbb-v142-cols-3,
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-grid.wpbb-v142-cols-4,
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-grid.wpbb-v142-cols-5{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important}
+}
+@media(min-width:1040px){
+  html body.wpbb-v142-home #wp-theme-main .clothes-values,
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-values-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-grid.wpbb-v142-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-grid.wpbb-v142-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-grid.wpbb-v142-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-grid.wpbb-v142-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:18px!important}
+}
+
+/* Cards should have consistent widths/heights but keep each section's content. */
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-grid :is(
+  .wp-theme-sector-card,.wp-theme-process-card,.wp-theme-case-card,.wpbb-icon-card,.wpbb-sector-card,
+  .wpbb-sector-proof-card,.wp-theme-sector-proof__item,.wpbb-fun-fact,.wpbb-catalogue-card,.wp-theme-gallery-card,
+  .wp-theme-blog-card,article,.card,li.product
+){min-width:0!important;max-width:none!important}
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-services-grid :is(.wp-theme-sector-card,.wpbb-icon-card,.wpbb-sector-card),
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-industries-grid :is(.wp-theme-sector-card,.wpbb-icon-card,.wpbb-sector-card),
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-process-grid :is(.wp-theme-process-card,.wp-theme-sector-card,.wpbb-icon-card),
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-case-grid :is(.wp-theme-case-card,.wp-theme-sector-card,.wpbb-icon-card){
+  min-height:170px!important;padding:22px!important;border-color:var(--wpbb-v142-line)!important;border-radius:15px!important;background:#fff!important;box-shadow:var(--wpbb-v142-shadow)!important;
+}
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-stats-grid :is(.wpbb-fun-fact,.wp-theme-sector-proof__item){
+  width:100%!important;height:100%!important;min-height:106px!important;margin:0!important;padding:18px 20px!important;
+  border:1px solid var(--wpbb-v142-line)!important;border-radius:13px!important;background:var(--wpbb-v142-soft-2)!important;color:var(--wpbb-v142-ink)!important;
+}
+
+/* Category / gallery / catalogue media stay proportional and fill their cells. */
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-category-grid .clothes-category-tile{width:100%!important;height:100%!important;margin:0!important}
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-category-grid .clothes-category-tile figure{width:100%!important;margin:0 0 12px!important;overflow:hidden!important;background:var(--wpbb-v142-soft)!important}
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-category-grid .clothes-category-tile img{display:block!important;width:100%!important;aspect-ratio:4/3!important;object-fit:cover!important}
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-product-card{
+  display:flex!important;flex-direction:column!important;width:100%!important;height:100%!important;min-width:0!important;
+  overflow:hidden!important;border:1px solid var(--wpbb-v142-line)!important;border-radius:14px!important;background:#fff!important;box-shadow:0 10px 28px rgba(55,31,36,.055)!important;
+}
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-product-card :is(img,.wp-post-image){
+  display:block!important;width:100%!important;max-width:none!important;height:auto!important;aspect-ratio:4/3!important;object-fit:cover!important;background:var(--wpbb-v142-soft)!important;
+}
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-gallery-grid .wp-theme-gallery-card,
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-blog-grid :is(article,.wp-block-post){height:100%!important}
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-gallery-grid .wp-theme-gallery-card img,
+html body.wpbb-v142-home #wp-theme-main .wpbb-v142-blog-grid img{display:block!important;width:100%!important;aspect-ratio:4/3!important;object-fit:cover!important}
+
+/* Media/text pairs were visually too small after the axis was narrowed. */
+@media(min-width:900px){
+  html body.wpbb-v142-home #wp-theme-main .wp-theme-sector-media-text{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:52px!important;align-items:center!important;width:100%!important;margin:0!important}
+  html body.wpbb-v142-home #wp-theme-main .wp-theme-sector-media-text>:is(.wpbb-column,[class*="col-"]){width:100%!important;max-width:none!important;min-width:0!important;margin:0!important;padding:0!important;flex:none!important}
+}
+html body.wpbb-v142-home #wp-theme-main .wp-theme-sector-media-text__media{border-radius:18px!important;overflow:hidden!important;background:var(--wpbb-v142-soft)!important}
+
+/* --------------------------------------------------------------------------
+ * Clothes colour hierarchy: remove the surviving v83/v97 teal/navy treatment
+ * -------------------------------------------------------------------------- */
+html body.wpbb-v142 #wp-theme-main :is(.wp-theme-sector-eyebrow,.wp-theme-card-number,.wp-theme-text-link,.wp-theme-card-link,.wpbb-icon-card__link){color:var(--wpbb-v142-accent)!important}
+html body.wpbb-v142 #wp-theme-main :is(.wp-theme-sector-lead,.wp-theme-section-heading p){color:var(--wpbb-v142-copy)!important}
+html body.wpbb-v142-home #wp-theme-main :is(.wp-theme-services-section,.wp-theme-industries-section,.wp-theme-gallery-section,.wp-theme-shop-section){background:var(--wpbb-v142-soft)!important}
+html body.wpbb-v142-home #wp-theme-main :is(.wp-theme-about-section,.wp-theme-process-section,.wp-theme-faq-section,.wp-theme-insights-section,.wp-theme-blog-preview-section){background:#fffdf9!important}
+
+/* The dark studio newsletter in the screenshot had dark copy on a dark band. */
+html body.wpbb-v142-home #wp-theme-main .wp-theme-newsletter-section{
+  background:var(--wpbb-v142-dark)!important;color:#f8f2ef!important;
+}
+html body.wpbb-v142-home #wp-theme-main .wp-theme-newsletter-section :is(h1,h2,h3,h4,h5,h6,p,label,legend,.wp-newslatter-campaigns-consent,.wp-newslatter-campaigns-consent span){color:#f8f2ef!important;opacity:1!important}
+html body.wpbb-v142-home #wp-theme-main .wp-theme-newsletter-section p{color:#d8cdca!important}
+html body.wpbb-v142-home #wp-theme-main .wp-theme-newsletter-section :is(input[type="email"],input[type="text"],select,textarea){background:#fff!important;color:var(--wpbb-v142-ink)!important;border-color:rgba(255,255,255,.35)!important}
+html body.wpbb-v142-home #wp-theme-main .wp-theme-newsletter-section :is(button,.wp-element-button,.button){background:var(--wpbb-v142-accent)!important;border-color:var(--wpbb-v142-accent)!important;color:#fff!important}
+
+/* Footer newsletter: burgundy/dark Clothes palette, never teal. */
+html body.wpbb-v142 .wp-theme-footer-newsletter-band{
+  background:linear-gradient(110deg,var(--wpbb-v142-dark) 0%,#4a222a 54%,var(--wpbb-v142-accent) 100%)!important;
+}
+html body.wpbb-v142 .wp-theme-footer-newsletter__copy,
+html body.wpbb-v142 .wp-theme-footer-newsletter__copy :is(h2,h3,h4,p),
+html body.wpbb-v142 .wp-theme-footer-newsletter form :is(label,legend,.wp-newslatter-campaigns-consent,.wp-newslatter-campaigns-consent span){color:#fff!important;opacity:1!important}
+html body.wpbb-v142 .wp-theme-footer-main{background:#fffdf9!important;color:var(--wpbb-v142-copy)!important}
+html body.wpbb-v142 .wp-theme-footer-heading{color:var(--wpbb-v142-ink)!important}
+html body.wpbb-v142 .wp-theme-footer-main a{color:var(--wpbb-v142-copy)!important}
+html body.wpbb-v142 .wp-theme-footer-main a:hover{color:var(--wpbb-v142-accent)!important}
+html body.wpbb-v142 .wp-theme-footer-install a{border-color:var(--wpbb-v142-line)!important;background:#fff!important;color:var(--wpbb-v142-ink)!important}
+html body.wpbb-v142 .wp-theme-footer-install a:before{background:var(--wpbb-v142-accent)!important;color:#fff!important}
+
+/* Keep the catalogue and section headings from inheriting the old blue Jobs copy. */
+html body.wpbb-v142-home #wp-theme-main :is(.wp-theme-home-product-catalogue,.wp-theme-gallery-section,.wp-theme-insights-section,.wp-theme-blog-preview-section) :is(h1,h2,h3,h4,h5,h6){color:var(--wpbb-v142-ink)!important}
+html body.wpbb-v142-home #wp-theme-main :is(.wp-theme-home-product-catalogue,.wp-theme-gallery-section,.wp-theme-insights-section,.wp-theme-blog-preview-section) p{color:var(--wpbb-v142-copy)!important}
+
+/* --------------------------------------------------------------------------
+ * Responsive
+ * -------------------------------------------------------------------------- */
+@media(max-width:991.98px){
+  :root{--wpbb-v142-pad:18px;--wpbb-v142-left:18px;--wpbb-v142-right:18px}
+  html body.wpbb-v142 :is(.wp-theme-utility-bar,.wp-theme-header-main,.wp-theme-header-search-panel)>.container,
+  html body.wpbb-v142 .wp-theme-site-footer :is(.wp-theme-footer-main,.wp-theme-footer-bottom,.wp-theme-footer-newsletter-band)>.container,
+  html body.wpbb-v142 .wp-theme-footer-newsletter-band>.container{width:calc(100% - 36px)!important}
+  html body.wpbb-v142-home #wp-theme-main :is(.wpbb-v140-primary-hero,.wpbb-v140-secondary-hero) .wpbb-swiper-slide__content{width:calc(100% - 36px)!important}
+  html body.wpbb-v142-home #wp-theme-main .clothes-values,
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-values-grid{width:calc(100% - 36px)!important;gap:18px!important}
+}
+@media(max-width:679.98px){
+  :root{--wpbb-v142-pad:16px;--wpbb-v142-left:16px;--wpbb-v142-right:16px}
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-grid{gap:18px!important}
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-stats-grid.wpbb-v142-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  html body.wpbb-v142-home #wp-theme-main .wpbb-swiper--hero .wpbb-v142-hero-pagination{bottom:10px!important}
+  html body.wpbb-v142-home #wp-theme-main .wpbb-swiper--hero .wpbb-v142-hero-pagination__button{width:34px!important;min-width:34px!important;height:29px!important;min-height:29px!important}
+}
+@media(max-width:479.98px){
+  html body.wpbb-v142-home #wp-theme-main .wpbb-v142-stats-grid.wpbb-v142-grid{grid-template-columns:1fr!important}
+}
+
+/* Final screenshot details: remove the old v82 active-link pseudo underline so
+ * it does not appear as a stray tiny bar beside the v141 mega-menu arrow. */
+@media(min-width:1200px){
+  html body.wpbb-v142 .wp-theme-primary-menu>.current-menu-item:not(.menu-item-has-mega):not(.menu-item-megamenu)>a::after,
+  html body.wpbb-v142 .wp-theme-primary-menu>.current-menu-ancestor:not(.menu-item-has-mega):not(.menu-item-megamenu)>a::after{content:none!important;display:none!important}
+}
+
+/* Gallery pagination was present in the screenshot but almost invisible. */
+html body.wpbb-v142-home #wp-theme-main .wp-theme-gallery-section .swiper{padding-bottom:34px!important}
+html body.wpbb-v142-home #wp-theme-main .wp-theme-gallery-section .swiper-pagination{
+  display:flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;
+  left:50%!important;right:auto!important;bottom:5px!important;width:max-content!important;transform:translateX(-50%)!important;
+  visibility:visible!important;opacity:1!important;
+}
+html body.wpbb-v142-home #wp-theme-main .wp-theme-gallery-section .swiper-pagination-bullet{
+  display:block!important;width:8px!important;height:8px!important;margin:0!important;border-radius:999px!important;
+  background:color-mix(in srgb,var(--wpbb-v142-accent) 34%,#fff)!important;opacity:1!important;
+}
+html body.wpbb-v142-home #wp-theme-main .wp-theme-gallery-section .swiper-pagination-bullet-active{
+  width:24px!important;background:var(--wpbb-v142-accent)!important;
+}
